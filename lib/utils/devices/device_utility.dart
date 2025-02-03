@@ -31,8 +31,8 @@ class DeviceUtility {
         enable ? SystemUiMode.immersiveSticky : SystemUiMode.edgeToEdge);
   }
 
-  static void getScreenHeight(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
+  static double getScreenHeight() {
+   return  MediaQuery.of(Get.context!).size.height;
   }
 
   static Future<bool> hasInternetConnection() async {
@@ -57,27 +57,27 @@ class DeviceUtility {
         overlays: SystemUiOverlay.values);
   }
 
-  static void getScreenWidth(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
+  static double getScreenWidth() {
+  return MediaQuery.of(Get.context!).size.width;
   }
 
   static double getPixelRatio(BuildContext context) {
     return MediaQuery.of(Get.context!).devicePixelRatio;
   }
 
-  static double getStatusBarHeight(BuildContext context) {
-    return MediaQuery.of(context).padding.top;
+  static double getStatusBarHeight() {
+    return MediaQuery.of(Get.context!).padding.top;
   }
 
-  static double getBottomBarHeight(BuildContext context) {
-    return MediaQuery.of(context).padding.bottom;
+  static double getBottomBarHeight() {
+    return MediaQuery.of(Get.context!).padding.bottom;
   }
 
-  static double getBottomNavigationBarHeight(BuildContext context) {
+  static double getBottomNavigationBarHeight() {
     return kBottomNavigationBarHeight;
   }
 
-  static double getAppBarHeight(BuildContext context) {
+  static double getAppBarHeight() {
     return kToolbarHeight;
   }
 

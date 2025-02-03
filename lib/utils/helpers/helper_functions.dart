@@ -64,7 +64,7 @@ class HelperFunctions {
 
   static String truncateText(String text, int length) {
     if (text.length > length) {
-      return text.substring(0, length) + '...';
+      return '${text.substring(0, length)}...';
     } else {
       return text;
     }
@@ -76,8 +76,17 @@ class HelperFunctions {
   }
 
   static Size screenSize(BuildContext context) {
-    return MediaQuery.of(context).size;
+    return MediaQuery.of(Get.context!).size;
   }
+  static double screenHeight(BuildContext context){
+    return MediaQuery.of(Get.context!).size.height;
+  }
+  
+  static double screenWidth(BuildContext context){
+    return MediaQuery.of(Get.context!).size.width;
+  }
+
+
 
 static String getFormattedDate(DateTime date, {String format ='dd mm yyyy'}){
   return DateFormat(format).format(date); 
