@@ -28,7 +28,7 @@ class AppColors {
   //background container colors
   static const Color lightContainer = Color(0xfff6f6f6);
   static Color darkContainer =
-      const Color.fromARGB(255, 46, 46, 46).withValues(alpha: 200);
+      const Color.fromARGB(255, 46, 46, 46).withOpacity(0.8);
 
   //Button colors
   static const Color buttonPrimary = Color(0xff4b68ff);

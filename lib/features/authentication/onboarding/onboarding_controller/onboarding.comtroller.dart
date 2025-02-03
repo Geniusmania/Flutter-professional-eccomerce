@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ui/features/authentication/login_and_signup/login.dart';
+import 'package:ui/features/authentication/login_and_signup/login/login.dart';
 
 class OnboardingController {
   static OnboardingController get instance => Get.find();

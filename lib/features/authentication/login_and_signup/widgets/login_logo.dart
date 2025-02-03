@@ -18,6 +18,7 @@ class LoginLogo extends StatelessWidget {
             height: DeviceUtility.getScreenHeight() * .18,
             //To implement dark and light logo
             image: const AssetImage('assets/images/My_loGo.PNG')),
+        const SizedBox(height: AppSize.spaceBtwTtems),
         Text(AppTexts.loginTitle,
             style: Theme.of(context).textTheme.headlineMedium),
         const SizedBox(height: AppSize.spaceBtwTtems),

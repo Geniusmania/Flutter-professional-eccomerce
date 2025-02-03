@@ -41,17 +41,28 @@ static const String resetPasswordTitle = 'Reset Password ';
 static const String rememberMe = 'Remember me ';
 static const String resetPasswordSubtitle = 'Enter your email to reset your password ';
 static const String resetPasswordButton = 'Reset Password ';
-static const String resetPasswordSuccess = 'Password reset successfully ';
+static const String resetPasswordSuccessTitle = 'Password reset successfully ';
+static const String resetPasswordSuccessSubtitle = 'Your password has been reset successfully. Please login with your new password. ';
+
 static const String resetPasswordError = 'Error while resetting password. Please try again.';
 
 
 //email verification and success screen text
 
 
-static String confirmEmail ='Verify your email';
-static String confirmEmailSubTitle ='Congratulations! Your account awaits: Verify your email address to start shopping';
+static String confirmEmail ='Verify your email adress';
+static String confirmEmailSubTitle ='Congratulations! Your account awaits: Verify your email address to start shopping with us!';
+static String emailReceived ='Email received';
 static String emailNotreceived ='Didn`t get email? Check your spam/junk folder or resend it!';
 static const yourAccountCreatedTitle= 'Your account has been created succesfully!';
+static const yourAccountCreatedSubtitle= 'Welcome to Genius Mania! Your account has been created successfully. Start shopping now!';
+
+static const resendEmail = 'Resend Email';
+static const emailVerified = 'Email Verified';
+static const emailNotVerified = 'Email Not Verified';
+static const emailVerificationSuccess = 'Email verification successful ';
+static const emailVerificationError = 'Error while verifying email. Please try again.';
+static const continueButton = 'Continue';
 
 
 

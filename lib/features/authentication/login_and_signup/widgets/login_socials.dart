@@ -26,7 +26,7 @@ class LoginSocials extends StatelessWidget {
                   height: AppSize.iconSm,
     
                   //google logo
-                  image: AssetImage('assets/images/My_loGo.PNG'))),
+                  image: AssetImage('assets/images/google.png'))),
         ),
         const SizedBox(
           width: AppSize.spaceBtwTtems,
@@ -45,7 +45,7 @@ class LoginSocials extends StatelessWidget {
                   height: AppSize.iconSm,
     
                   //facebook logo
-                  image: AssetImage('assets/images/My_loGo.PNG'))),
+                  image: AssetImage('assets/images/fb.png'))),
         ),
       ],
     );

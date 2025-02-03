@@ -2,7 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:ui/features/authentication/login_and_signup/email_verification.dart';
+import 'package:ui/features/authentication/login_and_signup/emailVerification/email_verification.dart';
+import 'package:ui/features/authentication/login_and_signup/widgets/login_devider.dart';
+import 'package:ui/features/authentication/login_and_signup/widgets/login_socials.dart';
 import 'package:ui/utils/constants/colors.dart';
 import 'package:ui/utils/constants/sizes.dart';
 import 'package:ui/utils/constants/texts.dart';
@@ -128,7 +130,8 @@ class RegisterForm extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           child: ElevatedButton(onPressed: () =>Get.to(()=> const EmailVerification() ), child: const Text('Sign Up')),
-        )
+        ),
+    
       ],
     );
   }

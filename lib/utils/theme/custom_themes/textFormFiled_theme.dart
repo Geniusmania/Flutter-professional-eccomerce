@@ -11,7 +11,7 @@ class GTextFormField {
     hintStyle: const TextStyle(color: Colors.grey, fontSize: 14),
     errorStyle: const TextStyle(fontStyle: FontStyle.normal, fontSize: 14),
     floatingLabelStyle:
-        TextStyle(color: Colors.black.withValues(alpha: .5), fontSize: 14),
+        TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 14),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
       borderSide: const BorderSide(width: 1, color: Colors.grey),
@@ -46,7 +46,7 @@ class GTextFormField {
     hintStyle: const TextStyle(color: Colors.grey, fontSize: 14),
     errorStyle: const TextStyle(fontStyle: FontStyle.normal, fontSize: 14),
     floatingLabelStyle:
-        TextStyle(color: Colors.white.withValues(alpha: .5), fontSize: 14),
+        TextStyle(color: Colors.white.withOpacity(0.5), fontSize: 14),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
       borderSide: const BorderSide(width: 1, color: Colors.grey),
