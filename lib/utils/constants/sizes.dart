@@ -2,11 +2,11 @@ class AppSize {
   AppSize._();
 
 //padding and margin
-  static const xs = 4;
-  static const sm = 8;
-  static const md = 16;
-  static const lg = 24;
-  static const xl = 32;
+  static const double xs = 4;
+  static const double  sm= 8;
+  static const double md = 16;
+  static const double lg = 24;
+  static const double xl = 32;
 
   //icon size
   static const iconXs = 12.0;
@@ -58,6 +58,11 @@ class AppSize {
   static const double cardSizeXs = 10;
   static const double cardSizeMd = 12;
   static const double cardSizeLg = 16;
+  static const double cardRadiusLg = 16;
+  static const double cardRadiusMd = 12;
+  static const double cardRadiusSm = 10;
+  static const double cardRadiusXs = 6;
+
 
   //Image carousel Height
   static const double imageCarouselHeight = 200;
