@@ -21,7 +21,7 @@ class SectionHeading extends StatelessWidget {
       padding: const EdgeInsets.only(left: AppSize.deafaultspace),
       child: Column(
         children: [
-          Row(
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(title,
                   style: Theme.of(context)

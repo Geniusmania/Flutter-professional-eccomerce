@@ -3,9 +3,10 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ui/features/screens/home/home_screen.dart';
 import 'package:ui/features/screens/profile/profile.dart';
-import 'package:ui/features/screens/shop/shop.dart';
 import 'package:ui/features/screens/wishlist/wish_list.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
+
+import '../screens/Store/shop.dart';
 
 class ButtonNavBar extends StatelessWidget {
   const ButtonNavBar({super.key});
@@ -25,7 +26,7 @@ class ButtonNavBar extends StatelessWidget {
                 indicatorColor: dark ? Colors.white.withOpacity(0.1) : Colors.black.withOpacity(0.1),
             destinations: const [
               NavigationDestination(icon: Icon(Iconsax.home), label: 'Home'),
-              NavigationDestination(icon: Icon(Iconsax.shop), label: 'Shop'),
+              NavigationDestination(icon: Icon(Iconsax.shop), label: 'Store'),
               NavigationDestination(
                   icon: Icon(Iconsax.heart), label: 'Wishlist'),
               NavigationDestination(icon: Icon(Iconsax.user), label: 'Profile'),
@@ -40,7 +41,7 @@ class NavBarScreens extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
     const HomeScreen(),
-    const ShopScreen(),
+    const StoreScreen(),
     const WishListScreen(),
     const ProfileScreen(),
   ];

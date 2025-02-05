@@ -21,7 +21,7 @@ const  SmoothPage({super.key});
             controller: controller.pageController,
             onDotClicked: controller.dotNavigationClick,
             effect: ExpandingDotsEffect(
-                activeDotColor: dark ? AppColors.dark : AppColors.light,
+                activeDotColor: dark ? AppColors.light : AppColors.primary,
                 dotHeight: 6),
             count: 3));
   }

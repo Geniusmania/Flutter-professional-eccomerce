@@ -5,6 +5,7 @@ import 'package:ui/utils/constants/sizes.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
 
 class SearchContainer extends StatelessWidget {
+  final VoidCallback? onTap;
   final IconData? icon;
   final bool showBorder, showBackground;
   final String text;
@@ -13,29 +14,32 @@ class SearchContainer extends StatelessWidget {
     this.icon,
     this.showBorder = true,
     this.showBackground = true,
-    required this.text,
+    required this.text, this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSize.spaceBtwSections),
-      child: Container(
-        padding: const EdgeInsets.all(AppSize.cardRadiusSm),
-        decoration: BoxDecoration(
-            color: showBackground? dark? AppColors.light : AppColors.dark : Colors.transparent,
-            borderRadius: BorderRadius.circular(AppSize.cardRadiusLg),
-            border:showBorder? Border.all(color: AppColors.darkgrey): null),
-        child: Row(
-          children: [
-            const Icon(Iconsax.search_normal),
-            const SizedBox(width: AppSize.deafaultspace),
-            Text(
-              text,
-              style: Theme.of(context).textTheme.labelMedium,
-            )
-          ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: AppSize.spaceBtwSections),
+        child: Container(
+          padding: const EdgeInsets.all(AppSize.cardRadiusSm),
+          decoration: BoxDecoration(
+              color: showBackground? dark? AppColors.dark : AppColors.light : Colors.transparent,
+              borderRadius: BorderRadius.circular(AppSize.cardRadiusLg),
+              border:showBorder? Border.all(color: AppColors.darkgrey): null),
+          child: Row(
+            children: [
+              const Icon(Iconsax.search_normal),
+              const SizedBox(width: AppSize.deafaultspace),
+              Text(
+                text,
+                style: Theme.of(context).textTheme.labelMedium,
+              )
+            ],
+          ),
         ),
       ),
     );
