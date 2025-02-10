@@ -13,7 +13,7 @@ class VerticalImageText extends StatelessWidget {
     required this.title,
    this.textColor = Colors.white,
     this.onTap,
-    this.backgroundColor = Colors.white,
+    this.backgroundColor,
   });
 
   @override
@@ -25,18 +25,18 @@ class VerticalImageText extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: 56,
-              width: 56,
+              height: 60,
+              width: 60,
               padding: const EdgeInsets.all(AppSize.xs),
               decoration: BoxDecoration(
                   color:backgroundColor  ?? (HelperFunctions.isDarkMode(context)? Colors.black: Colors.white),
                   // shape: BoxShape.circle,
-                  borderRadius: BorderRadius.circular(100)),
-              child:  Center(
-                  child: Image(
-                image: AssetImage(image),
-                fit: BoxFit.cover,//color: (HelperFunctions.isDarkMode(context)? AppColors.dark: AppColors.light),
-              )),
+                  borderRadius: BorderRadius.circular(100), image: DecorationImage(image: AssetImage(image),fit: BoxFit.cover,)),
+              // child:  Center(
+              //     child: Image(
+              //   image: AssetImage(image),
+              //   fit: BoxFit.cover,//color: (HelperFunctions.isDarkMode(context)? AppColors.dark: AppColors.light),
+              // )),
             ),
             SizedBox(
               width: 55,

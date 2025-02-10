@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui/commons/widgets/layouts/grid_layout.dart';
+import 'package:ui/commons/widgets/layouts/gridLayout/grid_layout.dart';
 import 'package:ui/commons/widgets/products/products_cards/product_card_vertical.dart';
 import 'package:ui/commons/widgets/sectionHeader/section_header.dart';
 import 'package:ui/features/screens/home/widgets/app_bar.dart';
@@ -39,7 +39,8 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: AppSize.spaceBtwTtems),
 
                   // categories
-                  HomeCategories()
+                  HomeCategories(),
+                  SizedBox(height: 25),
                 ],
               ),
             ),
@@ -56,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                       'assets/images/light.jpg'
                     ]),
                     const SizedBox(height: AppSize.spaceBtwTtems),
-                    SectionHeading(title: 'Popular Products', onPressed: () {}),
+                    SectionHeading(title: 'Popular Products', onPressed: () {},padding: const EdgeInsets.all(0),),
                     GridLayout(
                         itemCount: 2,
                         itemBuilder: (_, index) => const ProductCardVertical()),

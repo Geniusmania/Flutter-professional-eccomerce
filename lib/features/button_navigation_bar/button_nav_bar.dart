@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ui/features/screens/home/home_screen.dart';
-import 'package:ui/features/screens/profile/profile.dart';
 import 'package:ui/features/screens/wishlist/wish_list.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
-
 import '../screens/Store/shop.dart';
+import '../screens/personalization/settings/settings.dart';
 
 class ButtonNavBar extends StatelessWidget {
   const ButtonNavBar({super.key});
@@ -43,6 +42,6 @@ class NavBarScreens extends GetxController {
     const HomeScreen(),
     const StoreScreen(),
     const WishListScreen(),
-    const ProfileScreen(),
+    const SettingsScreen(),
   ];
 }

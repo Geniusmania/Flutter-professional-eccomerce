@@ -12,9 +12,9 @@ final Widget child;
   Widget build(BuildContext context) {
     return CurvedWidget(
       child: Container(
-        padding: const EdgeInsets.all(0),
-        height: 300,
-        width: double.infinity,
+        // padding: const EdgeInsets.all(0),
+        // height: 350,
+        // width: double.infinity,
         decoration: const BoxDecoration(color: AppColors.primary),
         child: Stack(
           children: [

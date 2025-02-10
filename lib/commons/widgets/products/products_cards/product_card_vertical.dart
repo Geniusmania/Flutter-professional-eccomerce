@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ui/commons/widgets/icon/circular_icon.dart';
 import 'package:ui/commons/widgets/products/product_price/product_price.dart';
@@ -6,9 +7,12 @@ import 'package:ui/commons/widgets/roudedContainer/rounded_container.dart';
 import 'package:ui/commons/widgets/rounded_image/rounded_image.dart';
 import 'package:ui/commons/widgets/texts/product_title_text.dart';
 import 'package:ui/features/screens/home/classes/vertical_product_shadow.dart';
+import 'package:ui/features/screens/product_details/product_details.dart';
 import 'package:ui/utils/constants/colors.dart';
 import 'package:ui/utils/constants/sizes.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
+
+import '../../title_and_icon/title_and_icon.dart';
 
 class ProductCardVertical extends StatelessWidget {
   const ProductCardVertical({super.key});
@@ -17,7 +21,7 @@ class ProductCardVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: (){},
+      onTap: ()=> Get.to(()=> const ProductDetailScreen()),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
@@ -36,7 +40,7 @@ class ProductCardVertical extends StatelessWidget {
                   //........................//
                   const RoundedImage(
                     height: 180,
-                    imageUrl: 'assets/products/2.jpg',
+                    imageUrl: 'assets/products/3.jpg',
                     applyImageRadius: true,
                     fit: BoxFit.cover,
                   ),
@@ -73,31 +77,17 @@ class ProductCardVertical extends StatelessWidget {
             ),
             const SizedBox(height: AppSize.spaceBtwTtems / 2),
             Padding(
-              padding: const EdgeInsets.only(left: AppSize.sm),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const ProductTitleText(title: 'Red nice bag', smallSize: true),
-                  const SizedBox(height: AppSize.spaceBtwTtems / 2.5),
-                  Row(
-                    children: [
-                      Text(
-                        'Balanciaga',
-                        style: Theme.of(context).textTheme.labelMedium,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const SizedBox(width: AppSize.spaceBtwTtems / 2),
-                      const Icon(
-                        Iconsax.verify5,
-                        color: AppColors.primary,
-                        size: AppSize.iconXs,
-                      )
-                    ],
-                  ),
-
-                 
-                ],
+              padding: const EdgeInsets.only(left:5),
+              child: Align(alignment: Alignment.centerLeft,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const ProductTitleText(title: 'Red nice bag', smallSize: true),
+                    const SizedBox(height: AppSize.spaceBtwTtems / 2.5),
+                    BrandTitleWithIcon(title: 'Balaciaga',textColor: dark? Colors.white: Colors.black,),
+                  ],
+                ),
               ),
             ),
            const Spacer(),
@@ -126,5 +116,7 @@ class ProductCardVertical extends StatelessWidget {
     );
   }
 }
+
+
 
 

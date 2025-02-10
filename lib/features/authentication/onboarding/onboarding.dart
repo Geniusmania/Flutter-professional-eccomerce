@@ -6,6 +6,7 @@ import 'package:ui/features/authentication/onboarding/widgets/onboarding_page.da
 import 'package:ui/features/authentication/onboarding/widgets/onboarding_skip.dart';
 import 'package:ui/features/authentication/onboarding/widgets/smooth_page_scrollling.dart';
 import 'package:ui/utils/constants/texts.dart';
+import 'package:ui/utils/helpers/helper_functions.dart';
 
 class Onboarding extends StatelessWidget {
   const Onboarding({super.key});
@@ -13,24 +14,25 @@ class Onboarding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
    final controller = Get.put(OnboardingController());
+   final dark = HelperFunctions.isDarkMode(context);
     return Scaffold(
         body: Stack(children: [
       PageView(
        controller: controller.pageController,
        onPageChanged: controller.updatePageIndicator,
-        children: const [
+        children: [
           OnboardingPage(
-            image: 'assets/images/My_loGo.PNG',
+            image: dark ? 'assets/splash/dartpic.jpg':'assets/splash/lightpic.jpg',
             title: AppTexts.onboardingTitle1,
             subTitle: AppTexts.onboardingSubtitle1,
           ),
           OnboardingPage(
-            image: 'assets/images/My_loGo.PNG',
+            image: dark ? 'assets/splash/dartpic.jpg':'assets/splash/lightpic.jpg',
             title: AppTexts.onboardingTitle2,
             subTitle: AppTexts.onboardingSubtitle2,
           ),
           OnboardingPage(
-            image: 'assets/images/My_loGo.PNG',
+            image:  dark ? 'assets/splash/dartpic.jpg':'assets/splash/lightpic.jpg',
             title: AppTexts.onboardingTitle3,
             subTitle: AppTexts.onboardingSubtitle3,
           ),
