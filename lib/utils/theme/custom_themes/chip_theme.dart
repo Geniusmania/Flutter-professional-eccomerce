@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui/utils/constants/colors.dart';
 
 class GChipTheme{
 GChipTheme._();
@@ -14,11 +15,11 @@ static ChipThemeData lightChipTheme = ChipThemeData(
 
 
 
-static ChipThemeData darkChipTheme = ChipThemeData(
-  disabledColor: Colors.grey.withOpacity(0.4),
+static ChipThemeData darkChipTheme = const ChipThemeData(
+  disabledColor: AppColors.darkergrey,
   selectedColor: Colors.blue,
-  labelStyle: const TextStyle(color: Colors.white),
-  padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12),
+  labelStyle: TextStyle(color: Colors.white),
+  padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 12),
   brightness: Brightness.dark,
   checkmarkColor: Colors.white,
 );

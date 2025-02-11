@@ -47,7 +47,7 @@ class ProductImageSlider extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     separatorBuilder: (_, __) =>
                     const SizedBox(width: 16),
-                    itemCount: 6,
+                    itemCount: 4,
                     itemBuilder: (_, index) => RoundedImage(
                         width: 80,
                         padding: const EdgeInsets.all(AppSize.sm),

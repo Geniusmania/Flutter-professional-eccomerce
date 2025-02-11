@@ -38,12 +38,12 @@ class ProductMetaData extends StatelessWidget {
         const ProductPrice(price: '1658',isLarge: true,)
       ],),
 
-      const SizedBox(height: 16/1.5),
-      const ProductTitleText(title: 'Fair Nice Chicki'),
+      const SizedBox(height: 16),
+      const ProductTitleText(title: 'Nice jogging shoes'),
       const SizedBox(height: 16/1.5),
       Row(
         children: [
-          const ProductTitleText(title: 'Status'),
+          const ProductTitleText(title: 'Status:',smallSize: true,),
           const SizedBox(width: 16),
           Text('In Stock' ,style: Theme.of(context).textTheme.titleMedium),
         ],
@@ -61,7 +61,7 @@ class ProductMetaData extends StatelessWidget {
                 overlayColor: dark? Colors.white: Colors.black,
                 image: 'assets/images/dark.jpg'),
             const SizedBox(width: 8),
-             const BrandTitleWithIcon(title: 'Nike', brandTextSize: TextSizes.medium,),
+             const BrandTitleWithIcon(title: 'Balanciaga', brandTextSize: TextSizes.medium,),
           ],
         )
     ],);
