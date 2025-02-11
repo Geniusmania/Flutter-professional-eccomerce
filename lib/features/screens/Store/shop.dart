@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:ui/commons/widgets/appbar/appBar.dart';
 import 'package:ui/commons/widgets/appbar/tabbar.dart';
 import 'package:ui/commons/widgets/layouts/gridLayout/grid_layout.dart';
-import 'package:ui/commons/widgets/roudedContainer/rounded_container.dart';
 import 'package:ui/commons/widgets/sectionHeader/section_header.dart';
 import 'package:ui/features/screens/Store/widgets/category_tab.dart';
 import 'package:ui/features/screens/home/widgets/search_bar.dart';
 import 'package:ui/features/screens/home/widgets/shopping_counter.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
 import '../../../commons/widgets/brands/brand_card.dart';
-import '../../../commons/widgets/brandshowcase/brand_show_case.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
 

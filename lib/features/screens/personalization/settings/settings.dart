@@ -8,6 +8,7 @@ import 'package:ui/features/screens/home/widgets/header.dart';
 import '../../../../commons/widgets/layouts/list_tiles/profile_tile.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../adress/address.dart';
 import '../profile/profile_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -38,7 +39,7 @@ class SettingsScreen extends StatelessWidget {
           child: Column(children: [
              const SectionHeading(title: 'Account Settings',showActionButton: false),
             const SizedBox(height: 24),
-            SettingsMenuTile(title: 'My addresses', subtitle:'Set shopping delivery address', icon: Iconsax.safe_home,onTap: (){}),
+            SettingsMenuTile(title: 'My addresses', subtitle:'Set shopping delivery address', icon: Iconsax.safe_home,onTap: ()=> Get.to(()=> const UserAddressScreen())),
             SettingsMenuTile(title: 'My Cart', subtitle:'Add, remove products and move to checkout', icon: Iconsax.shopping_cart,onTap: (){}),
             SettingsMenuTile(title: 'My Orders', subtitle:'In-progress and Completed Orders', icon: Iconsax.bag_tick,onTap: (){}),
             SettingsMenuTile(title: 'Bank Account', subtitle:'Withdraw balance', icon: Iconsax.bank,onTap: (){}),

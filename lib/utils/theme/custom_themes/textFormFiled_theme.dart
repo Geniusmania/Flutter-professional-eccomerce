@@ -4,7 +4,7 @@ class GTextFormField {
   GTextFormField._();
 
   static InputDecorationTheme lightInputdecorationTheme = InputDecorationTheme(
-    errorMaxLines: 3,
+    errorMaxLines: 2,
     prefixIconColor: Colors.grey,
     suffixIconColor: Colors.grey,
     labelStyle: const TextStyle(color: Colors.black, fontSize: 14),
@@ -39,7 +39,7 @@ class GTextFormField {
 
 
   static InputDecorationTheme darkInputdecorationTheme = InputDecorationTheme(
-    errorMaxLines: 3,
+    errorMaxLines: 2,
     prefixIconColor: Colors.grey,
     suffixIconColor: Colors.grey,
     labelStyle: const TextStyle(color: Colors.white, fontSize: 14),

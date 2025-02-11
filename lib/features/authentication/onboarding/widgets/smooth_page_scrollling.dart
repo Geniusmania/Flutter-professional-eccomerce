@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:ui/features/authentication/onboarding/onboarding_controller/onboarding.comtroller.dart';
 import 'package:ui/utils/constants/colors.dart';

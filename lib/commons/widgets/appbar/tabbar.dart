@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:ui/utils/devices/device_utility.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
