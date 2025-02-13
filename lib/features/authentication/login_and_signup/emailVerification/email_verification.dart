@@ -61,7 +61,7 @@ class EmailVerification extends StatelessWidget {
                           image: 'assets/images/My_loGo.PNG',
                           title: AppTexts.yourAccountCreatedTitle,
                           subtitle: AppTexts.yourAccountCreatedSubtitle,
-                          onPressed: () => Get.to(() => const LoginScreen()),
+                          onPressed: () => Get.offAll(() => const LoginScreen()),
                         )),
                     child: const Text(
                       AppTexts.continueButton,

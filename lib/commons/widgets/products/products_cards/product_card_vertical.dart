@@ -21,7 +21,7 @@ class ProductCardVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: ()=> Get.to(()=> const ProductDetailScreen()),
+      onTap: () => Get.to(() => const ProductDetailScreen()),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
@@ -44,7 +44,7 @@ class ProductCardVertical extends StatelessWidget {
                     applyImageRadius: true,
                     fit: BoxFit.cover,
                   ),
-      
+
                   //.....................//
                   //discount percentage
                   Positioned(
@@ -62,9 +62,9 @@ class ProductCardVertical extends StatelessWidget {
                                 .labelLarge!
                                 .apply(color: Colors.black),
                           ))),
-      
+
                   //wislist heart
-      
+
                   const Positioned(
                       top: 0,
                       right: 0,
@@ -77,46 +77,54 @@ class ProductCardVertical extends StatelessWidget {
             ),
             const SizedBox(height: AppSize.spaceBtwTtems / 2),
             Padding(
-              padding: const EdgeInsets.only(left:5),
-              child: Align(alignment: Alignment.centerLeft,
+              padding: const EdgeInsets.only(left: 5),
+              child: Align(
+                alignment: Alignment.centerLeft,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const ProductTitleText(title: 'Red nice bag', smallSize: true),
+                    const ProductTitleText(
+                        title: 'Red nice bag', smallSize: true),
                     const SizedBox(height: AppSize.spaceBtwTtems / 2.5),
-                    BrandTitleWithIcon(title: 'Balaciaga',textColor: dark? Colors.white: Colors.black,),
+                    BrandTitleWithIcon(
+                      title: 'Balaciaga',
+                      textColor: dark ? Colors.white : Colors.black,
+                    ),
                   ],
                 ),
               ),
             ),
-           const Spacer(),
-            
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                    const Padding(
-                      padding: EdgeInsets.only(left: AppSize.sm),
-                      child: ProductPrice(price: '25.3'),
-                    ), 
-                      
-                      Container(decoration: const BoxDecoration(color: AppColors.dark,
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(AppSize.cardRadiusMd),
-                      bottomRight: Radius.circular(AppSize.productImageRadius)
-                      )
-                      ),child: const SizedBox(
-                        height: AppSize.iconLg* 1.2,
-                        width: AppSize.iconLg*1.2,
-                        
-                        child: Icon(Iconsax.add, color: AppColors.white,)),)// price
-                    ],
-                  )
+            const Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(left: AppSize.sm),
+                  child: ProductPrice(price: '25.3'),
+                ),
+
+                Container(
+                  decoration: const BoxDecoration(
+                      color: AppColors.dark,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(AppSize.cardRadiusMd),
+                          bottomRight:
+                              Radius.circular(AppSize.productImageRadius))),
+                  child: const SizedBox(
+                      height: AppSize.iconLg * 1.2,
+                      width: AppSize.iconLg * 1.2,
+                      child: Icon(
+                        Iconsax.add,
+                        color: AppColors.white,
+                      )),
+                )
+                // price
+              ],
+            )
           ],
         ),
       ),
     );
   }
 }
-
-
-
-

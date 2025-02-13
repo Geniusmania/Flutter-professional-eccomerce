@@ -22,13 +22,13 @@ class CategoryTab extends StatelessWidget {
                 const BrandShowcase(
                   images: [
                     'assets/products/3.jpg',
-                    'assets/products/1.jpg',
+                    'assets/products/3.jpg',
                     'assets/products/3.jpg'
                   ],
                 ), const BrandShowcase(
                   images: [
                     'assets/products/3.jpg',
-                    'assets/products/1.jpg',
+                    'assets/products/3.jpg',
                     'assets/products/3.jpg'
                   ],
                 ),

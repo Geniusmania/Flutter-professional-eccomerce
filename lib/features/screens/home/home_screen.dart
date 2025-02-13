@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ui/commons/widgets/layouts/gridLayout/grid_layout.dart';
 import 'package:ui/commons/widgets/products/products_cards/product_card_vertical.dart';
 import 'package:ui/commons/widgets/sectionHeader/section_header.dart';
+import 'package:ui/features/screens/all_products/all_products.dart';
 import 'package:ui/features/screens/home/widgets/app_bar.dart';
 import 'package:ui/features/screens/home/widgets/header.dart';
 import 'package:ui/features/screens/home/widgets/home_categories.dart';
@@ -57,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                       'assets/images/light.jpg'
                     ]),
                     const SizedBox(height: AppSize.spaceBtwTtems),
-                    SectionHeading(title: 'Popular Products', onPressed: () {},padding: const EdgeInsets.all(0),),
+                    SectionHeading(title: 'Popular Products', onPressed: ()=> Get.to(()=>const AllProducts() ),padding: const EdgeInsets.all(0),),
                     GridLayout(
                         itemCount: 2,
                         itemBuilder: (_, index) => const ProductCardVertical()),

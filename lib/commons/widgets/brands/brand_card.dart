@@ -28,10 +28,10 @@ final void Function()? onTap;
             //..........icon.............//
             Flexible(
               child: CircularImage(
-                  image: 'assets/images/img.png',
+                  image: 'assets/products/3.jpg',
                   isNetworkImage: false,
-                  backgroundColor: Colors.transparent,
-                  overlayColor: dark ? Colors.white : Colors.black),
+                  backgroundColor: Colors.white,
+                  overlayColor: dark ? Colors.white : Colors.white),
             ),
 
             const SizedBox(width: AppSize.spaceBtwTtems / 2),

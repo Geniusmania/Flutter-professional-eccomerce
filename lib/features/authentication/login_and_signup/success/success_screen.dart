@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:ui/features/authentication/login_and_signup/login/login.dart';
 import 'package:ui/utils/constants/sizes.dart';
 import 'package:ui/utils/constants/texts.dart';
 
 class SuccessScreen extends StatelessWidget {
   final String image, title, subtitle;
-final  VoidCallback? onPressed;
-  const SuccessScreen({super.key, required this.image, required this.title, required this.subtitle, this.onPressed});
+
+final  void Function()?  onPressed;
+  const SuccessScreen({super.key, required this.image, required this.title, required this.subtitle, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +26,13 @@ final  VoidCallback? onPressed;
 
               //message
               Text(
-                AppTexts.yourAccountCreatedTitle,
+                title,
                 style: Theme.of(context).textTheme.headlineMedium,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: AppSize.deafaultspace),
 
-              Text(AppTexts.yourAccountCreatedSubtitle,
+              Text(subtitle,
                   style: Theme.of(context).textTheme.bodyMedium,
                   textAlign: TextAlign.center),
               const SizedBox(height: AppSize.deafaultspace),
@@ -41,7 +40,7 @@ final  VoidCallback? onPressed;
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => Get.to(() => const LoginScreen()),
+                  onPressed:onPressed,
                   child: const Text(
                     AppTexts.continueButton,
                   ),

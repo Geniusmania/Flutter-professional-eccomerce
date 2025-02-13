@@ -4,7 +4,9 @@ import 'package:iconsax/iconsax.dart';
 import 'package:ui/commons/widgets/appbar/appBar.dart';
 import 'package:ui/commons/widgets/layouts/list_tiles/settings_menu_tile.dart';
 import 'package:ui/commons/widgets/sectionHeader/section_header.dart';
+import 'package:ui/features/screens/cart/cart.dart';
 import 'package:ui/features/screens/home/widgets/header.dart';
+import 'package:ui/features/screens/order/order.dart';
 import '../../../../commons/widgets/layouts/list_tiles/profile_tile.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
@@ -40,8 +42,8 @@ class SettingsScreen extends StatelessWidget {
              const SectionHeading(title: 'Account Settings',showActionButton: false),
             const SizedBox(height: 24),
             SettingsMenuTile(title: 'My addresses', subtitle:'Set shopping delivery address', icon: Iconsax.safe_home,onTap: ()=> Get.to(()=> const UserAddressScreen())),
-            SettingsMenuTile(title: 'My Cart', subtitle:'Add, remove products and move to checkout', icon: Iconsax.shopping_cart,onTap: (){}),
-            SettingsMenuTile(title: 'My Orders', subtitle:'In-progress and Completed Orders', icon: Iconsax.bag_tick,onTap: (){}),
+            SettingsMenuTile(title: 'My Cart', subtitle:'Add, remove products and move to checkout', icon: Iconsax.shopping_cart,onTap: ()=> Get.to(()=> const CartScreen())),
+            SettingsMenuTile(title: 'My Orders', subtitle:'In-progress and Completed Orders', icon: Iconsax.bag_tick,onTap: ()=> Get.to(()=> const OrderScreen())),
             SettingsMenuTile(title: 'Bank Account', subtitle:'Withdraw balance', icon: Iconsax.bank,onTap: (){}),
             SettingsMenuTile(title: 'My Coupons', subtitle:'List of all discounted coupons', icon: Iconsax.discount_shape,onTap: (){}),
             SettingsMenuTile(title: 'Notifications', subtitle:'Set sny kind of notification message', icon: Iconsax.notification,onTap: (){}),

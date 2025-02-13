@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ui/commons/widgets/appbar/appBar.dart';
 import 'package:ui/commons/widgets/appbar/tabbar.dart';
 import 'package:ui/commons/widgets/layouts/gridLayout/grid_layout.dart';
@@ -10,6 +11,7 @@ import 'package:ui/utils/helpers/helper_functions.dart';
 import '../../../commons/widgets/brands/brand_card.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
+import '../brands/brands.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -51,7 +53,7 @@ class StoreScreen extends StatelessWidget {
                               padding: const EdgeInsets.all(0),
                               title: 'Featured Brands',
                               showActionButton: true,
-                              onPressed: () {}),
+                              onPressed: ()=> Get.to(()=> const Brands())),
 
                           //........space.......//
                           const SizedBox(height: AppSize.spaceBtwTtems / 3.5),

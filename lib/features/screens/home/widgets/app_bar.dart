@@ -4,6 +4,7 @@ import 'package:ui/features/screens/home/widgets/shopping_counter.dart';
 import 'package:ui/utils/constants/colors.dart';
 import 'package:ui/utils/constants/sizes.dart';
 import 'package:ui/utils/constants/texts.dart';
+import 'package:ui/utils/helpers/helper_functions.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget{
   const HomeAppBar({
@@ -12,6 +13,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget{
 
   @override
   Widget build(BuildContext context) {
+    final dark = HelperFunctions.isDarkMode(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppSize.md),
       child: Appbar(
@@ -34,7 +36,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget{
           ],
         ),
         actions:  [
-        ShoppingCounter( onPressed: () {  },),
+        ShoppingCounter(onPressed: () {  }, iconColor:AppColors.white),
         ],
       ),
     );

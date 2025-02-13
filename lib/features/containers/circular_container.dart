@@ -8,7 +8,7 @@ class CircularImage extends StatelessWidget {
   final bool isNetworkImage;
   final Color? overlayColor;
   final Color? backgroundColor;
-  final double width, height, padding;
+  final double width, height, padding,borderRadius;
 
   const CircularImage({
     super.key,
@@ -19,7 +19,7 @@ class CircularImage extends StatelessWidget {
     this.width = 50,
     this.height = 50,
     this.padding = AppSize.xs,
-    this.isNetworkImage = false,
+    this.isNetworkImage = false,  this.borderRadius = 100,
   });
 
   @override
@@ -31,7 +31,7 @@ class CircularImage extends StatelessWidget {
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
         color: dark ? Colors.black : Colors.white,
-        borderRadius: BorderRadius.circular(100),image: DecorationImage(image:isNetworkImage
+        borderRadius: BorderRadius.circular(borderRadius),image: DecorationImage(image:isNetworkImage
           ? NetworkImage(image)
           : AssetImage(image) as ImageProvider,fit: fit,)
       ),
