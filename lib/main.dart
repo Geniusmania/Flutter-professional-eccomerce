@@ -1,10 +1,27 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:ui/features/authentication/onboarding/onboarding.dart';
-import 'package:ui/utils/constants/sizes.dart';
+import 'package:ui/firebase_options.dart';
+import 'package:ui/utils/constants/colors.dart';
 import 'package:ui/utils/theme/theme.dart';
+import 'package:get_storage/get_storage.dart';
 
-void main() {
+void main() async {
+// widget Binding
+  final WidgetsBinding widgetsBinding =
+      WidgetsFlutterBinding.ensureInitialized();
+// local storage
+  await GetStorage.init();
+// payment methods
+// native splash
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+// firebase
+// authentication
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  //.then((FirebaseApp value) => Get.put(AuthenticationRepository()));
   runApp(const MyApp());
 }
 
@@ -19,84 +36,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       darkTheme: GAppTheme.darkTheme,
       theme: GAppTheme.lightTheme,
-      home: const Onboarding(),
-    );
-  }
-}
-
-class Home extends StatelessWidget {
-  const Home({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const Image(image: AssetImage('assets/images/My_loGo.PNG')),
-            const SizedBox(
-              height: AppSize.deafaultspace,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  Form(
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: TextFormField(
-                                expands: false,
-                                decoration: const InputDecoration(
-                                    border: OutlineInputBorder(),
-                                    hintText: 'First Name'),
-                              ),
-                            ),
-                            const SizedBox(width: AppSize.spaceBtwTtems),
-                            Expanded(
-                              child: TextFormField(
-                                expands: false,
-                                decoration: const InputDecoration(
-                                    border: OutlineInputBorder(),
-                                    hintText: 'Last Name'),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: AppSize.spaceBtwInputField),
-                        TextFormField(
-                          expands: false,
-                          decoration: const InputDecoration(
-                              border: OutlineInputBorder(), hintText: 'Email'),
-                        ),
-                        const SizedBox(height: AppSize.spaceBtwInputField),
-                        TextFormField(
-                          expands: false,
-                          decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              hintText: 'Password'),
-                        ),
-                        const SizedBox(height: AppSize.spaceBtwInputField),
-                        const Text.rich(TextSpan(
-                            children: [TextSpan(text: 'Login Or SignUp')])),
-                        const SizedBox(height: AppSize.spaceBtwInputField),
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                              onPressed: () {},
-                              child: const Text('Create Account')),
-                        )
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
+      home: const Scaffold(backgroundColor: AppColors.primary,body: Center(child: CircularProgressIndicator(color: Colors.white))),
     );
   }
 }

@@ -1,0 +1,1 @@
+C:\Users\User\Desktop\Flutter-professional-ui\build\app\intermediates\cxx\RelWithDebInfo\686x151s\obj\arm64-v8a
