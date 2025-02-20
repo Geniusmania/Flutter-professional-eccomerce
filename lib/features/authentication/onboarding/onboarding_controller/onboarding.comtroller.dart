@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:ui/features/authentication/login_and_signup/login/login.dart';
 
 class OnboardingController {
@@ -18,6 +19,8 @@ class OnboardingController {
   }
   void nextPage() {
     if(currentPage.value ==2){
+      final storage =GetStorage();
+      storage.write("isFirstTime", false);
       Get.offAll(()=>const LoginScreen());
     }else{
       int page = currentPage.value + 1;

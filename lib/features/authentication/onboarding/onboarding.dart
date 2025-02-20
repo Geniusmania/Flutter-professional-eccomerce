@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui/features/authentication/onboarding/onboarding_controller/onboarding.comtroller.dart';
-import 'package:ui/features/authentication/onboarding/widgets/onboarding_next.dart';
-import 'package:ui/features/authentication/onboarding/widgets/onboarding_page.dart';
-import 'package:ui/features/authentication/onboarding/widgets/onboarding_skip.dart';
-import 'package:ui/features/authentication/onboarding/widgets/smooth_page_scrollling.dart';
+import 'package:ui/features/authentication/onboarding/onboarding_controller/widgets/onboarding_next.dart';
+import 'package:ui/features/authentication/onboarding/onboarding_controller/widgets/onboarding_page.dart';
+import 'package:ui/features/authentication/onboarding/onboarding_controller/widgets/onboarding_skip.dart';
+import 'package:ui/features/authentication/onboarding/onboarding_controller/widgets/smooth_page_scrollling.dart';
+
 import 'package:ui/utils/constants/texts.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
 
