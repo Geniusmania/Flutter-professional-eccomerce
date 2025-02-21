@@ -2,8 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:ui/features/authentication/login_and_signup/emailVerification/email_verification.dart';
 import 'package:ui/features/authentication/login_and_signup/login/login.dart';
 import 'package:ui/features/authentication/onboarding/onboarding.dart';
+import 'package:ui/features/button_navigation_bar/button_nav_bar.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -16,29 +18,39 @@ class AuthenticationRepository extends GetxController {
   @override
   void onReady() {
     FlutterNativeSplash.remove();
-    screenRedirect();
+     deviceStorage.writeIfNull('isFirstTime', true);
+       deviceStorage.read('isFirstTime') != true
+           ? Get.offAll(() => const LoginScreen())
+           : Get.offAll(() => const Onboarding());
+   //  screenRedirect();
+   // super.onReady();
   }
 
-  screenRedirect() async {
-    //local storage
-    deviceStorage.writeIfNull('isFirstTime', true);
-    deviceStorage.read('isFirstTime') != true
-        ? Get.offAll(() => const LoginScreen())
-        : Get.offAll(() => const Onboarding());
+  // screenRedirect( ) async {
+  //   //check if user is authenticated
+  //   final user = _auth.currentUser;
+  //   if (user != null) {
+  //     if (user.emailVerified) {
+  //       Get.offAll(() => const ButtonNavBar());
+  //     } else {
+  //       Get.offAll(() => EmailVerification(
+  //             email: _auth.currentUser!.email,
+  //           ));
+
+  //       //local storage
+  //     }
+  //   } else {
+  //     deviceStorage.writeIfNull('isFirstTime', true);
+  //     deviceStorage.read('isFirstTime') != true
+  //         ? Get.offAll(() => const LoginScreen())
+  //         : Get.offAll(() => const Onboarding());
+  //   }
+  // }
+//register user
+ 
+
+//send email verification link
+  
+
+  //logout
   }
-
-  Future<UserCredential> registerUser(String email, String password) async {
-    try {
-      return await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
-    } on FirebaseAuthException catch (e) {
-      throw e.toString();
-    } on FirebaseException catch (e) {
-      throw e.toString();
-    }
-  }
-}
-
-
-//register
-

@@ -2,15 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui/features/authentication/login_and_signup/login/login.dart';
+import 'package:ui/features/authentication/login_and_signup/register/verify_email_controller.dart';
 import 'package:ui/features/authentication/login_and_signup/success/success_screen.dart';
 import 'package:ui/utils/constants/sizes.dart';
 import 'package:ui/utils/constants/texts.dart';
 
 class EmailVerification extends StatelessWidget {
-  const EmailVerification({super.key});
-
+  const EmailVerification({super.key, this.email});
+final String? email;
   @override
   Widget build(BuildContext context) {
+final controller = Get.put(VerifyEmailController());
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -42,7 +45,7 @@ class EmailVerification extends StatelessWidget {
                 ),
                 const SizedBox(height: AppSize.deafaultspace),
                 Text(
-                  'geniusmania@gmail.com',
+                  email?? '',
                   style: Theme.of(context).textTheme.labelLarge,
                   textAlign: TextAlign.center,
                 ),
@@ -57,12 +60,8 @@ class EmailVerification extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () => Get.to(() => SuccessScreen(
-                          image: 'assets/images/My_loGo.PNG',
-                          title: AppTexts.yourAccountCreatedTitle,
-                          subtitle: AppTexts.yourAccountCreatedSubtitle,
-                          onPressed: () => Get.offAll(() => const LoginScreen()),
-                        )),
+                    onPressed: (){},// => controller.checkEmailVerification(),
+                        
                     child: const Text(
                       AppTexts.continueButton,
                     ),
@@ -72,7 +71,7 @@ class EmailVerification extends StatelessWidget {
                   height: AppSize.spaceBtwTtems,
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {},//controller.sendEmailVerification();},
                   child: const Text(
                     AppTexts.resendEmail,
                   ),

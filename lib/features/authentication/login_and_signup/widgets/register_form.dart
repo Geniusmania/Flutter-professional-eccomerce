@@ -124,7 +124,7 @@ class RegisterForm extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-                onPressed: () => controller.register(),
+                onPressed: (){},// => controller.register(),
                 child: const Text('Sign Up')),
           ),
         ],
