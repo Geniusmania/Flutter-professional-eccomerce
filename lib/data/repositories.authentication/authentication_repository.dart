@@ -3,6 +3,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:ui/MODEL_NEW/user_model.dart';
+import 'package:ui/constant_api.dart';
 import 'package:ui/features/authentication/login_and_signup/emailVerification/email_verification.dart';
 import 'package:ui/features/authentication/login_and_signup/login/login.dart';
 import 'package:ui/features/authentication/onboarding/onboarding.dart';
@@ -56,9 +57,9 @@ class AuthenticationRepository extends GetxController {
 
 
 //register user
-Future<UserModel?> registerUser(String phone,String email, String password,String firstName, String lastName, String username) async {
+Future<UserModel?> registerUser(String phone,String email, String password,String first_name, String last_name, String username) async {
   final response = await http.post(
-    Uri.parse('http://192.168.41.142:3000/api/auth/register'),
+    Uri.parse('http://192.168.30.95:3000/api/auth/register'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -66,8 +67,8 @@ Future<UserModel?> registerUser(String phone,String email, String password,Strin
       'phone': phone,
       'email': email,
       'password': password,
-      'firstName': firstName,
-      'lastName': lastName,
+      'first_name': first_name,
+      'last_name': last_name,
       'username': username,
       
     }),
@@ -84,13 +85,17 @@ final responseData = jsonDecode(response.body);
   //login user
 
 Future<UserModel?> login(String email, String password)async{
-final response = await http.post(Uri.parse('http://192.168.41.142:3000/api/auth/login'),headers:{'Content-Type':'Application/json; charset=UTF-8'},body: jsonEncode({
+final response = await http.post(Uri.parse('http://192.168.30.95:3000/api/auth/login'),headers:{'Content-Type':'Application/json; charset=UTF-8'},body: jsonEncode({
   'email':email,
   'password':password
 }));
 final responseData = jsonDecode(response.body);
 if(response.statusCode ==200 || response.statusCode ==201){
   print('login successful: ${responseData['message']}');
+  print(responseData);
+   final token = responseData['token']; // Correct key based on Postman response
+  deviceStorage.write('token', token);
+  print('Token saved: $token');
   return null;
 }else{
 throw Exception(responseData['message']?? 'login failed');

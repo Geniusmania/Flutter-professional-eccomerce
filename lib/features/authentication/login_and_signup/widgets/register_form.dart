@@ -28,7 +28,7 @@ class RegisterForm extends StatelessWidget {
             children: [
               Expanded(
                   child: TextFormField(
-                controller: controller.firstName,
+                controller: controller.first_name,
                 validator: (value) =>
                     Validators.validateEmptytext('First name', value),
                 expands: false,
@@ -44,7 +44,7 @@ class RegisterForm extends StatelessWidget {
               ),
               Expanded(
                 child: TextFormField(
-                  controller: controller.lastName,
+                  controller: controller.last_name,
                   validator: (value) =>
                       Validators.validateEmptytext('Last name', value),
                   expands: false,

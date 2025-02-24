@@ -12,7 +12,7 @@ class Loaders {
         backgroundColor: Colors.orange,
         snackPosition: SnackPosition.BOTTOM,
         duration: const Duration(seconds: 3),
-        margin: const EdgeInsets.all(20),
+        margin: const EdgeInsets.all(5),
         icon: const Icon(Iconsax.warning_2, color: AppColors.white));
   }
 
@@ -23,7 +23,7 @@ class Loaders {
         colorText: AppColors.white,
         backgroundColor: Colors.green,
         duration: Duration(seconds: duration),
-        margin: const EdgeInsets.all(20),
+        margin: const EdgeInsets.all(5),
         snackPosition: SnackPosition.BOTTOM,
         icon: const Icon(
           Iconsax.check,
@@ -39,7 +39,7 @@ class Loaders {
         backgroundColor: Colors.red.shade600,
         snackPosition: SnackPosition.BOTTOM,
         duration: const Duration(seconds: 3),
-        margin: const EdgeInsets.all(20),
+        margin: const EdgeInsets.all(5),
         icon: const Icon(Iconsax.warning_2, color: AppColors.white));
   }
 }

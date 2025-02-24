@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ui/commons/widgets/appbar/appBar.dart';
+import 'package:ui/features/controllers/user_profile_controller.dart';
 import 'package:ui/features/screens/home/widgets/shopping_counter.dart';
 import 'package:ui/utils/constants/colors.dart';
 import 'package:ui/utils/constants/sizes.dart';
@@ -13,7 +15,10 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget{
 
   @override
   Widget build(BuildContext context) {
-    final dark = HelperFunctions.isDarkMode(context);
+   final controller = Get.put(UserProfile());
+   final token = controller.deviceStorage.read('token');
+
+   if (token != null){ controller.getUserProfile(token);}
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppSize.md),
       child: Appbar(
@@ -26,12 +31,16 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget{
                   .labelMedium!
                   .apply(color: AppColors.grey),
             ),
-            Text(
-              AppTexts.appBarSubTitle,
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineSmall!
-                  .apply(color: AppColors.grey),
+            Obx((){
+              
+              //print(controller.getUserProfile(token).toString());
+              return Text(
+               controller.userName.value,
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineSmall!
+                    .apply(color: AppColors.grey),
+              );},
             )
           ],
         ),

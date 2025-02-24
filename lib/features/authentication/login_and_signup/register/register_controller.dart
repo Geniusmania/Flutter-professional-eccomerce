@@ -15,8 +15,8 @@ class RegisterController extends GetxController {
   final hidePassword = true.obs;
   final privacyPolicy = true.obs;
   final email = TextEditingController();
-  final firstName = TextEditingController();
-  final lastName = TextEditingController();
+  final first_name = TextEditingController();
+  final last_name = TextEditingController();
   final password = TextEditingController();
   final phoneNumber = TextEditingController();
   final username = TextEditingController();
@@ -57,8 +57,8 @@ Future<void> register() async {
       phoneNumber.text.trim(),
       email.text.trim(),
       password.text.trim(),
-      firstName.text.trim(),
-      lastName.text.trim(),
+      first_name.text.trim(),
+      last_name.text.trim(),
       username.text.trim(),
     );
 
