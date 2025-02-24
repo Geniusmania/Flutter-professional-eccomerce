@@ -1,0 +1,70 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:ui/data/repositories.authentication/authentication_repository.dart';
+import 'package:ui/features/button_navigation_bar/button_nav_bar.dart';
+import 'package:ui/features/screens/home/home_screen.dart';
+import 'package:ui/utils/helpers/network_manager.dart';
+import 'package:ui/utils/popups/full_screen_loader.dart';
+import 'package:ui/utils/popups/loaders.dart';
+
+class LoginController extends GetxController{
+static LoginController get instance => Get.find();
+
+
+GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+RxBool hidePassword = true.obs;
+
+RxBool privacyPolicy = true.obs;
+TextEditingController emailController = TextEditingController();
+TextEditingController passwordController = TextEditingController();
+
+
+Future<void>login()async{
+  try {
+    
+ // Start loading
+    // FullScreenLoader.openLoadingDialog(
+    //     'We are processing your information....', Images.image);
+
+    // Check internet connectivity
+    final isConnected = await NetworkManager.instance.isConnected();
+    if (!isConnected) {
+      //FullScreenLoader.stopLoading();
+      Loaders.errorSnackBar(title: 'Connection Error', message: 'No internet connection.');
+      return;
+    }
+
+    // Form validation
+    if (!loginFormKey.currentState!.validate()) {
+      //FullScreenLoader.stopLoading();
+      Loaders.errorSnackBar(title: 'Validation Error', message: 'Please fill all required fields.');
+      return;
+    }
+
+    // Privacy policy check
+    if (!privacyPolicy.value) {
+     // FullScreenLoader.stopLoading();
+      Loaders.warningSnackBar(
+          title: 'Accept Privacy Policy',
+          message: 'Please accept the privacy policy to proceed.');
+      return;
+    }
+
+await AuthenticationRepository.instance.login(emailController.text.trim(), passwordController.text.trim());
+
+ Loaders.successSnackBar(
+          title: 'Welcome',
+          message: 'Have an amazing shopping experience');
+
+      // Navigate to verification page
+      Get.to(() => const ButtonNavBar());
+  } catch (e) {
+   //  FullScreenLoader.stopLoading();
+    Loaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+    print('login error: $e');
+  }
+}
+
+
+
+}
