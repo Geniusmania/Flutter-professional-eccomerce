@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ui/commons/widgets/appbar/appBar.dart';
-import 'package:ui/features/controllers/user_controller.dart';
-import 'package:ui/features/controllers/user_profile_controller.dart';
+import 'package:ui/features/shop/controllers/user_controller.dart';
+import 'package:ui/features/shop/controllers/user_profile_controller.dart';
 import 'package:ui/utils/constants/sizes.dart';
 import 'package:ui/utils/validators/validators.dart';
 

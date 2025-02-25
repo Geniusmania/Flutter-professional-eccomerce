@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import 'package:ui/features/controllers/user_profile_controller.dart';
+import 'package:ui/features/shop/controllers/user_profile_controller.dart';
 
-import '../../utils/popups/loaders.dart';
-import '../screens/personalization/profile/profile_screen.dart';
+import '../../../utils/popups/loaders.dart';
+import '../../screens/personalization/profile/profile_screen.dart';
 
 class UserUpdate{
 static UserUpdate get instance => Get.find();

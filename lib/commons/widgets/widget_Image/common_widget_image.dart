@@ -1,43 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:ui/features/containers/circular_container.dart';
 import 'package:ui/utils/constants/sizes.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
 
+import '../../../utils/constants/colors.dart';
+
 class VerticalImageText extends StatelessWidget {
+  final bool isNetWorkImage;
   final String image, title;
   final Color textColor;
   final void Function()? onTap;
   final Color? backgroundColor;
+
   const VerticalImageText({
     super.key,
     required this.image,
     required this.title,
-   this.textColor = Colors.white,
+    this.textColor = Colors.white,
     this.onTap,
     this.backgroundColor,
+    this.isNetWorkImage = true,
   });
 
   @override
   Widget build(BuildContext context) {
+    final dark = HelperFunctions.isDarkMode(context);
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.only(left: AppSize.spaceBtwTtems/2),
+        padding: const EdgeInsets.only(left: AppSize.spaceBtwTtems / 2),
         child: Column(
           children: [
-            Container(
-              height: 60,
-              width: 60,
-              padding: const EdgeInsets.all(AppSize.xs),
-              decoration: BoxDecoration(
-                  color:backgroundColor  ?? (HelperFunctions.isDarkMode(context)? Colors.black: Colors.white),
-                  // shape: BoxShape.circle,
-                  borderRadius: BorderRadius.circular(100), image: DecorationImage(image: AssetImage(image),fit: BoxFit.cover,)),
-              // child:  Center(
-              //     child: Image(
-              //   image: AssetImage(image),
-              //   fit: BoxFit.cover,//color: (HelperFunctions.isDarkMode(context)? AppColors.dark: AppColors.light),
-              // )),
+            CircularImage(
+              image: image,
+              fit: BoxFit.contain,
+              padding: AppSize.sm * 1.4,
+              isNetworkImage: isNetWorkImage,
+              backgroundColor: backgroundColor,
+              overlayColor: dark ? AppColors.light : AppColors.dark,
             ),
+            const SizedBox(height: 5),
             SizedBox(
               width: 55,
               child: Center(

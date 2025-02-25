@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:ui/features/controllers/user_profile_controller.dart';
+import 'package:ui/features/shop/controllers/user_profile_controller.dart';
 
 import '../../../../features/containers/circular_container.dart';
 import '../../../../utils/constants/colors.dart';

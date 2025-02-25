@@ -3,11 +3,8 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:ui/MODEL_NEW/user_model.dart';
-import 'package:ui/constant_api.dart';
-import 'package:ui/features/authentication/login_and_signup/emailVerification/email_verification.dart';
 import 'package:ui/features/authentication/login_and_signup/login/login.dart';
 import 'package:ui/features/authentication/onboarding/onboarding.dart';
-import 'package:ui/features/button_navigation_bar/button_nav_bar.dart';
 import 'package:http/http.dart'as http;
 import 'dart:convert';
 

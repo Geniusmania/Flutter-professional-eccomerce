@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 
-import '../authentication/login_and_signup/login/login.dart';
+import '../../authentication/login_and_signup/login/login.dart';
 
 class UserProfile extends GetxController {
   static UserProfile get instance => Get.find();
