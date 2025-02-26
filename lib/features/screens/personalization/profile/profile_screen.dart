@@ -6,9 +6,7 @@ import 'package:ui/commons/widgets/sectionHeader/section_header.dart';
 import 'package:ui/features/containers/circular_container.dart';
 import 'package:ui/features/shop/controllers/user_profile_controller.dart';
 import 'package:ui/features/screens/personalization/profile/change_name.dart';
-
 import 'package:ui/features/screens/personalization/profile/widgets/profile_menu.dart';
-
 import '../../../../utils/helpers/helper_functions.dart';
 
 

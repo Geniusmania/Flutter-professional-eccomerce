@@ -45,6 +45,7 @@ class HomeCategories extends StatelessWidget {
                 'http://localhost:3000', 'http://192.168.30.95:3000');
 
             return VerticalImageText(
+
               isNetWorkImage: true,
               image: fixedImageUrl,
               title: category.name,

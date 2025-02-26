@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:ui/bindings/general_bindings.dart';
 import 'package:ui/features/authentication/onboarding/onboarding.dart';
 import 'package:ui/firebase_options.dart';
+import 'package:ui/routes/app_routes.dart';
 import 'package:ui/utils/constants/colors.dart';
 import 'package:ui/utils/theme/theme.dart';
 import 'package:get_storage/get_storage.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
       darkTheme: GAppTheme.darkTheme,
       theme: GAppTheme.lightTheme,
       initialBinding: GeneralBindings(),
+      getPages: AppRoutes.pages,
       home: const Scaffold(backgroundColor: AppColors.primary,body: Center(child: CircularProgressIndicator(color: Colors.white))),
     );
   }

@@ -7,10 +7,11 @@ enum PaymentMethods {
   creditCard,
   cashOnDelivery,
   applePay,
-  googlepay,
+  googlePay,
   stripe,
   visa,
   mastercard,
-  paystack,
+  payStack,
   razorpay
 }
+enum ProductType{single, variable}

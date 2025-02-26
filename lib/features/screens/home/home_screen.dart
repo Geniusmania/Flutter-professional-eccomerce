@@ -9,6 +9,7 @@ import 'package:ui/features/screens/home/widgets/header.dart';
 import 'package:ui/features/screens/home/widgets/home_categories.dart';
 import 'package:ui/features/screens/home/widgets/search_bar.dart';
 import 'package:ui/features/screens/home/widgets/slider.dart';
+import 'package:ui/features/shop/controllers/product_controller.dart';
 import 'package:ui/utils/constants/sizes.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -16,6 +17,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final productController = Get.put(ProductController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -56,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(height: AppSize.spaceBtwTtems),
                     SectionHeading(title: 'Popular Products', onPressed: ()=> Get.to(()=>const AllProducts() ),padding: const EdgeInsets.all(0),),
                     GridLayout(
-                        itemCount: 2,
+                        itemCount: 4,
                         itemBuilder: (_, index) => const ProductCardVertical()),
                   ],
                 )),

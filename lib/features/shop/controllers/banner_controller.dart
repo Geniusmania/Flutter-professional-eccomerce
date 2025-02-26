@@ -11,7 +11,7 @@ class BannerController extends GetxController {
 
 
   final carouselCurrentIndex = 0.obs;
-  final isLoading = true.obs;
+  final isLoading = false.obs;
 @override
   void onInit() {
   fetchBanners();
@@ -26,10 +26,12 @@ class BannerController extends GetxController {
       isLoading.value = true;
       final banners = await bannerRepository.fetchAllBanners();
       allBanners.assignAll(banners);
-
+      isLoading.value = false;
     } catch (e) {
       print(e.toString());
       Loaders.errorSnackBar(title: 'Sorry', message: e.toString());
+    }finally{
+      isLoading.value = false;
     }
   }
 }
