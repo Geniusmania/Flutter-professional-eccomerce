@@ -52,12 +52,7 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(AppSize.deafaultspace),
                 child: Column(
                   children: [
-                    const PromoSlider(banners: [
-                      'assets/images/dark.jpg',
-                      'assets/images/light.jpg',
-                      'assets/images/dark.jpg',
-                      'assets/images/light.jpg'
-                    ]),
+                    const PromoSlider(),
                     const SizedBox(height: AppSize.spaceBtwTtems),
                     SectionHeading(title: 'Popular Products', onPressed: ()=> Get.to(()=>const AllProducts() ),padding: const EdgeInsets.all(0),),
                     GridLayout(

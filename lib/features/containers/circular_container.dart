@@ -19,7 +19,7 @@ class CircularImage extends StatelessWidget {
     this.width = 50,
     this.height = 50,
     this.padding = AppSize.xs,
-    this.isNetworkImage = false,  this.borderRadius = 100,
+    this.isNetworkImage = true,  this.borderRadius = 100,
   });
 
   @override

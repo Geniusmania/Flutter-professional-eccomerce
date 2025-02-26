@@ -22,7 +22,6 @@ class CategoryController extends GetxController {
       isLoading.value = true;
 
       final categories = await categoryRepository.getAllCategory();
-      print('Categories : $categories');
       allCategories.assignAll(categories);
       featuredCategories.assignAll(allCategories
           .where((category) => category.isFeatured && category.parentId.isEmpty)
