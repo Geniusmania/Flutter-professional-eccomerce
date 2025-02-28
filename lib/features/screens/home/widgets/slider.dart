@@ -34,7 +34,7 @@ class PromoSlider extends StatelessWidget {
                           return RoundedImage(
                             onTap: () => Get.toNamed(allBanners.targetScreen),
                             fit: BoxFit.cover,
-                            imageUrl: fixedImageUrl,
+                            imageUrl: allBanners.imageUrl,
                             isNetworkImage: true,
                           );
                         }).toList(),

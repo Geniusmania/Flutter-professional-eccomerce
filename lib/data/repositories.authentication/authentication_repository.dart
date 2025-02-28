@@ -72,7 +72,7 @@ Future<UserModel?> registerUser(String phone,String email, String password,Strin
   );
 final responseData = jsonDecode(response.body);
   if (response.statusCode == 200 || response.statusCode == 201) {
-    print("Registration Success: ${responseData['message']}");
+   // print("Registration Success: ${responseData['message']}");
     return null; // Returning null because no user data is sent back
   } else {
     throw Exception(responseData['message'] ?? 'Registration failed');
@@ -88,11 +88,11 @@ final response = await http.post(Uri.parse('http://192.168.30.95:3000/api/auth/l
 }));
 final responseData = jsonDecode(response.body);
 if(response.statusCode ==200 || response.statusCode ==201){
-  print('login successful: ${responseData['message']}');
-  print(responseData);
+ // print('login successful: ${responseData['message']}');
+ // print(responseData);
    final token = responseData['token']; // Correct key based on Postman response
   deviceStorage.write('token', token);
-  print('Token saved: $token');
+ // print('Token saved: $token');
   return null;
 }else{
 throw Exception(responseData['message']?? 'login failed');

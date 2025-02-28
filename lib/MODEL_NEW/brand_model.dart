@@ -17,7 +17,7 @@ class BrandModel {
   /// Factory method to create a BrandModel from JSON
   factory BrandModel.fromJson(Map<String, dynamic> json) {
     return BrandModel(
-      id: json['id'],
+      id: json['_id'],
       name: json['name'],
       image: json['image'],
       isFeatured: json['isFeatured'] ?? false,
@@ -28,7 +28,7 @@ class BrandModel {
   /// Converts BrandModel instance to JSON
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
+      '_id': id,
       'name': name,
       'image': image,
       'isFeatured': isFeatured,

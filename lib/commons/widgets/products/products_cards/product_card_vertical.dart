@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:ui/MODEL_NEW/product_model.dart';
 import 'package:ui/commons/widgets/icon/circular_icon.dart';
 import 'package:ui/commons/widgets/products/product_price/product_price.dart';
 import 'package:ui/commons/widgets/roudedContainer/rounded_container.dart';
@@ -8,20 +9,29 @@ import 'package:ui/commons/widgets/rounded_image/rounded_image.dart';
 import 'package:ui/commons/widgets/texts/product_title_text.dart';
 import 'package:ui/features/screens/home/classes/vertical_product_shadow.dart';
 import 'package:ui/features/screens/product_details/product_details.dart';
+import 'package:ui/features/shop/controllers/product_controller.dart';
 import 'package:ui/utils/constants/colors.dart';
+import 'package:ui/utils/constants/enums.dart';
 import 'package:ui/utils/constants/sizes.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
 
 import '../../title_and_icon/title_and_icon.dart';
 
 class ProductCardVertical extends StatelessWidget {
-  const ProductCardVertical({super.key});
+  const ProductCardVertical({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
+    final controller = ProductController.instance;
+    final salePercentage =
+        controller.calculateSalePercentage(product.price, product.salePrice);
     final dark = HelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () => Get.to(() => const ProductDetailScreen()),
+      onTap: () => Get.to(() => ProductDetailScreen(
+            product: product,
+          )),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
@@ -38,9 +48,10 @@ class ProductCardVertical extends StatelessWidget {
               child: Stack(
                 children: [
                   //........................//
-                  const RoundedImage(
+                  RoundedImage(
+                    isNetworkImage: true,
                     height: 180,
-                    imageUrl: 'assets/products/3.jpg',
+                    imageUrl: product.thumbnail,
                     applyImageRadius: true,
                     fit: BoxFit.cover,
                   ),
@@ -52,11 +63,12 @@ class ProductCardVertical extends StatelessWidget {
                       top: 5,
                       child: RoundedContainer(
                           radius: AppSize.sm,
-                          backgroundColor: AppColors.secondry.withOpacity(0.9),
+                          backgroundColor:
+                              AppColors.secondry.withValues(alpha: 0.9),
                           padding: const EdgeInsets.symmetric(
                               horizontal: AppSize.sm, vertical: AppSize.xs),
                           child: Text(
-                            '20%',
+                            '$salePercentage%',
                             style: Theme.of(context)
                                 .textTheme
                                 .labelLarge!
@@ -84,11 +96,10 @@ class ProductCardVertical extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const ProductTitleText(
-                        title: 'Red nice bag', smallSize: true),
+                    ProductTitleText(title: product.title, smallSize: true),
                     const SizedBox(height: AppSize.spaceBtwTtems / 2.5),
                     BrandTitleWithIcon(
-                      title: 'Balaciaga',
+                      title: product.brand!.name,
                       textColor: dark ? Colors.white : Colors.black,
                     ),
                   ],
@@ -99,9 +110,22 @@ class ProductCardVertical extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: AppSize.sm),
-                  child: ProductPrice(price: '25.3'),
+                Flexible(
+                  child: Column(
+                    children: [
+                      if (product.productType ==
+                              ProductType.single.toString() &&
+                          product.salePrice > 0)
+                        Padding(
+                          padding: const EdgeInsets.only(left: AppSize.sm),
+                          child: Text(product.price.toString(),style: Theme.of(context).textTheme.labelMedium!.apply(decoration: TextDecoration.lineThrough),)
+                        ), Padding(
+                        padding: const EdgeInsets.only(left: AppSize.sm),
+                        child: ProductPrice(
+                            price: controller.getProductPrice(product)),
+                      ),
+                    ],
+                  ),
                 ),
 
                 Container(

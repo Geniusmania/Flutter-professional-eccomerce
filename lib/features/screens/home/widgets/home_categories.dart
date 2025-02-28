@@ -41,13 +41,10 @@ class HomeCategories extends StatelessWidget {
           itemCount: controller.featuredCategories.length,
           itemBuilder: (_, int index) {
             final category = controller.featuredCategories[index];
-            final fixedImageUrl = category.imageUrl.replaceFirst(
-                'http://localhost:3000', 'http://192.168.30.95:3000');
-
             return VerticalImageText(
 
               isNetWorkImage: true,
-              image: fixedImageUrl,
+              image: category.imageUrl,
               title: category.name,
               onTap: () => Get.to(() => const SubCategory()),
             );

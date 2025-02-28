@@ -18,7 +18,7 @@ class BannerRepository extends GetxController{
 
   Future<List<BannerModel>> fetchAllBanners()async{
     try{
-      final response = await http.get(Uri.parse('${Api.URL}/allbanners'));
+      final response = await http.get(Uri.parse('${Api.URL}/api/banner'));
       if(response.statusCode == 200){
         final List<dynamic> data = jsonDecode(response.body);
         return data.map((json) => BannerModel.fromJson(json)).toList();

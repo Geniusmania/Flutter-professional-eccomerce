@@ -1,9 +1,11 @@
 class ProductAttributeModel {
+  String? id;
   String? name;
   final List<String>? values;
 
   /// Constructor
   ProductAttributeModel({
+     this.id,
     this.name,
     this.values,
   });
@@ -25,6 +27,7 @@ class ProductAttributeModel {
     return {
       'name': name,
       'values': values,
+      '_id':id
     };
   }
 }

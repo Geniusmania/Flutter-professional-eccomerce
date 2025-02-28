@@ -43,7 +43,7 @@ class ProductModel {
   /// Factory constructor for creating a new `ProductModel` from JSON
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
-      id: json['id'],
+      id: json['_id'],
       stock: json['stock'],
       sku: json['sku'],
       price: double.parse((json['price']??0.0).toString()),
@@ -72,7 +72,7 @@ class ProductModel {
 
   /// Converts this `ProductModel` to JSON
   Map<String, dynamic> toJson() => {
-    'id': id,
+    '_id': id,
     'stock': stock,
     'sku': sku,
     'price': price,
@@ -89,4 +89,6 @@ class ProductModel {
     'productAttributes': productAttributes?.map((e) => e.toJson()).toList(),
     'productVariations': productVariations?.map((e) => e.toJson()).toList(),
   };
+
+  static empty() {}
 }

@@ -23,7 +23,7 @@ class ProductVariationModel {
   /// Factory method to create a ProductVariationModel from JSON
   factory ProductVariationModel.fromJson(Map<String, dynamic> json) {
     return ProductVariationModel(
-      id: json['id'],
+      id: json['_id'],
       sku: json['sku'],
       image: json['image'],
       description: json['description'],
@@ -37,7 +37,7 @@ class ProductVariationModel {
   /// Converts ProductVariationModel instance to JSON
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
+      '_id': id,
       'sku': sku,
       'image': image,
       'description': description,

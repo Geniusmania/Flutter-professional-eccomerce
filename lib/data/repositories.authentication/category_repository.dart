@@ -11,10 +11,7 @@ class CategoryRepository extends GetxController{
 
   Future<List<CategoryModel>> getAllCategory() async {
     try {
-      final response = await http.get(Uri.parse('${Api.URL}/api/allcategories'));
-      print('Status code: ${response.statusCode}');
-      print('Response body: ${response.body}');
-
+      final response = await http.get(Uri.parse('${Api.URL}/api/category'));
       if (response.statusCode == 200) {
         final List<dynamic> data = jsonDecode(response.body);
         return data.map((json) => CategoryModel.fromJson(json)).toList();

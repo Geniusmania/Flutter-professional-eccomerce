@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui/data/repositories.authentication/authentication_repository.dart';
 import 'package:ui/features/button_navigation_bar/button_nav_bar.dart';
-import 'package:ui/features/screens/home/home_screen.dart';
 import 'package:ui/utils/helpers/network_manager.dart';
-import 'package:ui/utils/popups/full_screen_loader.dart';
 import 'package:ui/utils/popups/loaders.dart';
 
 class LoginController extends GetxController{

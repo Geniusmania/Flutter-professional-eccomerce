@@ -11,9 +11,11 @@ import 'package:ui/features/screens/product_details/widgets/rating_and_share.dar
 import 'package:ui/features/screens/product_review/product_review.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
 
-class ProductDetailScreen extends StatelessWidget {
-  const ProductDetailScreen({super.key});
+import '../../../MODEL_NEW/product_model.dart';
 
+class ProductDetailScreen extends StatelessWidget {
+  const ProductDetailScreen({super.key, required this.product});
+final ProductModel product;
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
