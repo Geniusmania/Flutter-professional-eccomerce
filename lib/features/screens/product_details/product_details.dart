@@ -12,13 +12,16 @@ import 'package:ui/features/screens/product_review/product_review.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
 
 import '../../../MODEL_NEW/product_model.dart';
+import '../../../utils/constants/enums.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   const ProductDetailScreen({super.key, required this.product});
-final ProductModel product;
+
+  final ProductModel product;
+
   @override
   Widget build(BuildContext context) {
-    final dark = HelperFunctions.isDarkMode(context);
+    HelperFunctions.isDarkMode(context);
     return Scaffold(
       bottomNavigationBar: const BottomAddToCart(),
       body: SingleChildScrollView(
@@ -26,7 +29,7 @@ final ProductModel product;
           children: [
             // product image slider
 
-            const ProductImageSlider(),
+            ProductImageSlider(product: product),
 
             //...........product Details.......//
             Padding(
@@ -36,14 +39,13 @@ final ProductModel product;
                   //..........Rating and share...................//
                   const RatingAndShare(),
                   //.......price, title stock and brand.........//
-                  const ProductMetaData(),
+                  ProductMetaData(product: product),
                   const SizedBox(height: 10),
                   //..........attributes................//
-                  const ProductAttributes(),
-
-                  const SizedBox(
-                    height: 30,
-                  ),
+                  if (product.productType == ProductType.variable.name)
+                    ProductAttributes(product: product),
+                  if (product.productType == ProductType.variable.name)
+                    const SizedBox(height: 30),
                   //..........Checkout Button ...........//
                   SizedBox(
                       width: double.infinity,
@@ -51,23 +53,21 @@ final ProductModel product;
                           onPressed: () {}, child: const Text('Checkout'))),
 
                   //..........Description.................//
-                  const SizedBox(
-                    height: 32,
-                  ),
+                  const SizedBox(height: 32),
                   const SectionHeading(
                       title: 'Description',
                       showActionButton: false,
                       padding: EdgeInsets.zero),
-                  const ReadMoreText(
-                    'This is Product Description for Genius mania dfu asuob sdus zsduiha scua soci sicsi csioc scnso cisn lsdicn sci svqeio and im feeling the mood ...jus de feel am',
+                  ReadMoreText(
+                    product.description ?? '',
                     trimLines: 2,
                     trimMode: TrimMode.Line,
                     trimCollapsedText: 'Show more',
                     trimExpandedText: 'Less',
-                    lessStyle:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
-                    moreStyle:
-                        TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                    lessStyle: const TextStyle(
+                        fontSize: 14, fontWeight: FontWeight.w800),
+                    moreStyle: const TextStyle(
+                        fontSize: 14, fontWeight: FontWeight.w800),
                   ),
 
                   //............Reviews..............//
@@ -79,11 +79,8 @@ final ProductModel product;
                       const SectionHeading(
                           title: 'Reviews (825)', showActionButton: false),
                       IconButton(
-                          onPressed: ()=> Get.to(()=>const  ProductReview()),
-                          icon: const Icon(
-                            Iconsax.arrow_right_3,
-                            size: 18,
-                          ))
+                          onPressed: () => Get.to(() => const ProductReview()),
+                          icon: const Icon(Iconsax.arrow_right_3, size: 18))
                     ],
                   ),
                   const SizedBox(height: 16),

@@ -11,12 +11,12 @@ class ProductVariationModel {
   /// Constructor
   ProductVariationModel({
     required this.id,
-    required this.sku,
-    required this.image,
+     this.sku ='',
+     this.image ='',
     this.description,
-    required this.price,
-    required this.salePrice,
-    required this.stock,
+     this.price = 0.0,
+     this.salePrice=0.0,
+     this.stock=0,
     required this.attributeValues,
   });
 
@@ -47,4 +47,6 @@ class ProductVariationModel {
       'attributeValues': attributeValues,
     };
   }
+
+  static ProductVariationModel empty() => ProductVariationModel(id: '', attributeValues: {});
 }

@@ -6,28 +6,50 @@ class HelperFunctions {
   static Color? getColor(String value) {
     if (value == 'green') {
       return Colors.green;
-    } else if (value == 'red') {
+    } else if (value == 'Red') {
       return Colors.red;
-    } else if (value == 'blue') {
+    } else if (value == 'Blue') {
       return Colors.blue;
-    } else if (value == 'yellow') {
+    } else if (value == 'Yellow') {
       return Colors.yellow;
-    } else if (value == 'orange') {
+    } else if (value == 'Orange') {
       return Colors.orange;
-    } else if (value == 'purple') {
+    } else if (value == 'Purple') {
       return Colors.purple;
-    } else if (value == 'pink') {
+    } else if (value == 'Pink') {
       return Colors.pink;
-    } else if (value == 'brown') {
+    } else if (value == 'Brown') {
       return Colors.brown;
-    } else if (value == 'grey') {
+    } else if (value == 'Grey') {
       return Colors.grey;
-    } else if (value == 'black') {
+    } else if (value == 'Black') {
       return Colors.black;
-    } else if (value == 'black') {
-      return Colors.black;
-    } else {
+    } else if (value == 'Cyan') {
+      return Colors.cyan;
+    } else if (value == 'Teal') {
+      return Colors.teal;
+    } else if (value == 'Indigo') {
+      return Colors.indigo;
+    } else if (value == 'Amber') {
+      return Colors.amber;
+    } else if (value == 'Lime') {
+      return Colors.lime;
+    } else if (value == 'DeepOrange') {
+      return Colors.deepOrange;
+    } else if (value == 'LightBlue') {
+      return Colors.lightBlue;
+    } else if (value == 'LightGreen') {
+      return Colors.lightGreen;
+    } else if (value == 'DeepPurple') {
+      return Colors.deepPurple;
+    } else if (value == 'BlueGrey') {
+      return Colors.blueGrey;
+    } else if (value == 'White') {
       return Colors.white;
+    }else if (value == 'Green') {
+      return Colors.green;
+    } else {
+      return Colors.white; // Default color
     }
   }
 
