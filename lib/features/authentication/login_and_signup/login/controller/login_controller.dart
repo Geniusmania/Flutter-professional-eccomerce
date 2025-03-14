@@ -39,14 +39,14 @@ Future<void>login()async{
       return;
     }
 
-    // Privacy policy check
-    if (!privacyPolicy.value) {
-     // FullScreenLoader.stopLoading();
-      Loaders.warningSnackBar(
-          title: 'Accept Privacy Policy',
-          message: 'Please accept the privacy policy to proceed.');
-      return;
-    }
+    // // Privacy policy check
+    // if (!privacyPolicy.value) {
+    //  // FullScreenLoader.stopLoading();
+    //   Loaders.warningSnackBar(
+    //       title: 'Accept Privacy Policy',
+    //       message: 'Please accept the privacy policy to proceed.');
+    //   return;
+    // }
 
 await AuthenticationRepository.instance.login(emailController.text.trim(), passwordController.text.trim());
 

@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../MODEL_NEW/brand_model.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_functions.dart';
@@ -26,7 +27,7 @@ final List<String> images;
       child: Column(
         children: [
           //........brand with product image
-          const BrandCard(showBorder: false),
+           BrandCard(showBorder: false,brand: BrandModel.empty(),),
 
           Row(
             children: images.map((image)=> brandProductAndImage(image, context)).toList(),

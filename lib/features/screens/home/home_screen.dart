@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:ui/commons/widgets/layouts/gridLayout/grid_layout.dart';
 import 'package:ui/commons/widgets/products/products_cards/product_card_vertical.dart';
 import 'package:ui/commons/widgets/sectionHeader/section_header.dart';
-import 'package:ui/commons/widgets/shimmer_effect/ShimmerEffect.dart';
 import 'package:ui/commons/widgets/shimmer_effect/vertical_product_shimmer.dart';
 import 'package:ui/features/screens/all_products/all_products.dart';
 import 'package:ui/features/screens/home/widgets/app_bar.dart';
@@ -51,8 +49,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-//body part slider
-
+            
             Padding(
                 padding: const EdgeInsets.all(AppSize.deafaultspace),
                 child: Column(
@@ -61,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(height: AppSize.spaceBtwTtems),
                     SectionHeading(
                       title: 'Popular Products',
-                      onPressed: () => Get.to(() => const AllProducts()),
+                      onPressed: () => Get.to(() =>   const AllProducts(title: 'Popular Products')),
                       padding: const EdgeInsets.all(0),
                     ),
                     Obx(() {
@@ -72,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                         return const Center(child: Text('No Data Found'));
                       }
                       return GridLayout(
-                          itemCount: controller.allProducts.length,
+                          itemCount: controller.allProducts.length > 16 ? 16: controller.allProducts.length,
                           itemBuilder: (_, index) =>
                               ProductCardVertical(product: controller.allProducts[index]));
                     }),

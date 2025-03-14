@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../utils/constants/sizes.dart';
 import '../../utils/helpers/helper_functions.dart';
@@ -8,7 +9,7 @@ class CircularImage extends StatelessWidget {
   final bool isNetworkImage;
   final Color? overlayColor;
   final Color? backgroundColor;
-  final double width, height, padding,borderRadius;
+  final double width, height, padding, borderRadius;
 
   const CircularImage({
     super.key,
@@ -19,21 +20,34 @@ class CircularImage extends StatelessWidget {
     this.width = 50,
     this.height = 50,
     this.padding = AppSize.xs,
-    this.isNetworkImage = true,  this.borderRadius = 100,
+    this.isNetworkImage = true,
+    this.borderRadius = 100,
   });
 
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
+
     return Container(
       width: width,
       height: height,
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
-        color: dark ? Colors.black : Colors.white,
-        borderRadius: BorderRadius.circular(borderRadius),image: DecorationImage(image:isNetworkImage
-          ? NetworkImage(image)
-          : AssetImage(image) as ImageProvider,fit: fit,)
+        color: backgroundColor ?? (dark ? Colors.black : Colors.white),
+        borderRadius: BorderRadius.circular(borderRadius),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(borderRadius),
+        child: isNetworkImage
+            ? CachedNetworkImage(
+          imageUrl: image,
+          fit: fit,
+          placeholder: (context, url) =>
+          const CircularProgressIndicator(), // Placeholder while loading
+          errorWidget: (context, url, error) =>
+          const Icon(Icons.error, color: Colors.red), // Error icon
+        )
+            : Image.asset(image, fit: fit),
       ),
     );
   }

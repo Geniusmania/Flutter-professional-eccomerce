@@ -19,7 +19,7 @@ import 'package:ui/routes/routes.dart';
 class AppRoutes {
   static final pages =[
     GetPage(name: Routes.home, page: ()=> const HomeScreen()),
-    GetPage(name: Routes.store, page: ()=> const StoreScreen()),
+   // GetPage(name: Routes.store, page: ()=> const StoreScreen()),
     GetPage(name: Routes.favourite, page: ()=> const WishListScreen()),
     GetPage(name: Routes.settings, page: ()=> const SettingsScreen()),
     GetPage(name: Routes.productReviews, page: ()=> const ProductReview()),

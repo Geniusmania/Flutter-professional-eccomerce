@@ -29,9 +29,7 @@ class ProductCardVertical extends StatelessWidget {
         controller.calculateSalePercentage(product.price, product.salePrice);
     final dark = HelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () => Get.to(() => ProductDetailScreen(
-            product: product,
-          )),
+      onTap: () => Get.to(() => ProductDetailScreen(product: product)),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
@@ -58,22 +56,23 @@ class ProductCardVertical extends StatelessWidget {
 
                   //.....................//
                   //discount percentage
-                  Positioned(
-                      left: 10,
-                      top: 5,
-                      child: RoundedContainer(
-                          radius: AppSize.sm,
-                          backgroundColor:
-                              AppColors.secondry.withValues(alpha: 0.9),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: AppSize.sm, vertical: AppSize.xs),
-                          child: Text(
-                            '$salePercentage%',
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelLarge!
-                                .apply(color: Colors.black),
-                          ))),
+                  if (salePercentage != null)
+                    Positioned(
+                        left: 10,
+                        top: 5,
+                        child: RoundedContainer(
+                            radius: AppSize.sm,
+                            backgroundColor:
+                                AppColors.secondry.withValues(alpha: 0.9),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: AppSize.sm, vertical: AppSize.xs),
+                            child: Text(
+                              '$salePercentage%',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelLarge!
+                                  .apply(color: Colors.black),
+                            ))),
 
                   //wislist heart
 
@@ -87,7 +86,7 @@ class ProductCardVertical extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: AppSize.spaceBtwTtems / 2),
+            const SizedBox(height: AppSize.spaceBtwTtems / 3),
             Padding(
               padding: const EdgeInsets.only(left: 5),
               child: Align(
@@ -117,9 +116,16 @@ class ProductCardVertical extends StatelessWidget {
                               ProductType.single.toString() &&
                           product.salePrice > 0)
                         Padding(
-                          padding: const EdgeInsets.only(left: AppSize.sm),
-                          child: Text(product.price.toString(),style: Theme.of(context).textTheme.labelMedium!.apply(decoration: TextDecoration.lineThrough),)
-                        ), Padding(
+                            padding: const EdgeInsets.only(left: AppSize.sm),
+                            child: Text(
+                              product.price.toString(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelMedium!
+                                  .apply(
+                                      decoration: TextDecoration.lineThrough),
+                            )),
+                      Padding(
                         padding: const EdgeInsets.only(left: AppSize.sm),
                         child: ProductPrice(
                             price: controller.getProductPrice(product)),

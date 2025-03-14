@@ -35,4 +35,6 @@ class BrandModel {
       'productsCount': productsCount,
     };
   }
+
+  static empty() {}
 }

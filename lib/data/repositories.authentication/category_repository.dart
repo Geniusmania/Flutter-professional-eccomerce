@@ -6,7 +6,7 @@ import 'package:ui/MODEL_NEW/category_model.dart';
 
 import '../../constant_api.dart';
 
-class CategoryRepository extends GetxController{
+class CategoryRepository extends GetxController {
   static CategoryRepository get instance => Get.find();
 
   Future<List<CategoryModel>> getAllCategory() async {
@@ -23,7 +23,4 @@ class CategoryRepository extends GetxController{
       throw Exception('Error fetching categories: $e');
     }
   }
-
-
-
 }

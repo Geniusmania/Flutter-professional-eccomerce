@@ -10,11 +10,6 @@ import '../../constant_api.dart';
 class BannerRepository extends GetxController{
   static BannerRepository get instance => Get.find();
 
-  // @override
-  // void onInit() {
-  //   fetchAllBanners();
-  //   super.onInit();
-  // }
 
   Future<List<BannerModel>> fetchAllBanners()async{
     try{

@@ -1,7 +1,9 @@
-
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:ui/MODEL_NEW/brand_model.dart';
 
 import '../../../features/containers/circular_container.dart';
+import '../../../features/shop/controllers/brand_controller.dart';
 import '../../../utils/constants/enums.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_functions.dart';
@@ -10,10 +12,16 @@ import '../title_and_icon/title_and_icon.dart';
 
 class BrandCard extends StatelessWidget {
   const BrandCard({
-    super.key, required this.showBorder, this.onTap,
+    super.key,
+    required this.showBorder,
+    this.onTap,
+    required this.brand,
   });
-final bool showBorder;
-final void Function()? onTap;
+
+  final BrandModel brand;
+  final bool showBorder;
+  final void Function()? onTap;
+
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
@@ -28,8 +36,8 @@ final void Function()? onTap;
             //..........icon.............//
             Flexible(
               child: CircularImage(
-                  image: 'assets/products/3.jpg',
-                  isNetworkImage: false,
+                  image: brand.image,
+                  isNetworkImage: true,
                   backgroundColor: Colors.white,
                   overlayColor: dark ? Colors.white : Colors.white),
             ),
@@ -40,11 +48,14 @@ final void Function()? onTap;
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const BrandTitleWithIcon(
-                      title: 'Nike', brandTextSize: TextSizes.large),
-                  Text('242 products',
+                  BrandTitleWithIcon(
+                      title: brand.name, brandTextSize: TextSizes.large),
+                  Text('${brand.productsCount ?? 0} products',
                       overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.labelMedium!.apply(color: dark? Colors.white: Colors.black))
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelMedium!
+                          .apply(color: dark ? Colors.white : Colors.black))
                 ],
               ),
             )

@@ -14,10 +14,10 @@ class ProductDetailController extends GetxController {
     images.add(product.thumbnail);
 
     selectedProductImage.value = product.thumbnail;
-    if (product.images != null || product.images!.isNotEmpty) {
+    if (product.images != null && product.images!.isNotEmpty) {
       images.addAll(product.images!);
     }
-    if (product.productVariations != null ||
+    if (product.productVariations != null &&
         product.productVariations!.isNotEmpty) {
       images.addAll(
           product.productVariations!.map((variation) => variation.image));

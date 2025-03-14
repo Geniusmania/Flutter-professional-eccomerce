@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:ui/MODEL_NEW/product_variation_model.dart';
 import 'package:ui/features/shop/controllers/product_detail_controller.dart';
 
@@ -6,6 +7,7 @@ import '../../../MODEL_NEW/product_model.dart';
 
 class VariationController extends GetxController {
   static VariationController get instance => Get.find();
+  final imageController = Get.put(ProductDetailController());
 
   RxMap selectedAttributes = {}.obs;
   RxString variationStockStatus = ''.obs;
@@ -16,7 +18,7 @@ class VariationController extends GetxController {
       ProductModel product, attributeName, attributeValue) {
     final selectedAttributes =
         Map<String, dynamic>.from(this.selectedAttributes);
-    attributeValue = selectedAttributes[attributeName] = attributeValue;
+    selectedAttributes[attributeName] = attributeValue;
     this.selectedAttributes[attributeName] = attributeValue;
 
     final selectedVariation = product.productVariations!.firstWhere(
@@ -25,8 +27,7 @@ class VariationController extends GetxController {
         orElse: () => ProductVariationModel.empty());
 
     if (selectedVariation.image.isNotEmpty) {
-      ProductDetailController.instance.selectedProductImage.value =
-          selectedVariation.image;
+      imageController.selectedProductImage.value = selectedVariation.image;
     }
     this.selectedVariation.value = selectedVariation;
     getProductVariationStockStatus();
@@ -42,16 +43,23 @@ class VariationController extends GetxController {
     return true;
   }
 
- Set<String?>  getAttributeAvailabilityInVariation(
+  String getVariationPrice() {
+    return (selectedVariation.value.salePrice > 0
+            ? selectedVariation.value.salePrice
+            : selectedVariation.value.price)
+        .toString();
+  }
+
+  Set<String?> getAttributeAvailabilityInVariation(
       List<ProductVariationModel> variations, String attributeName) {
-    final availableVariationAttributeValues =  variations
+    final availableVariationAttributeValues = variations
         .where((variation) =>
             variation.attributeValues[attributeName] != null &&
             variation.attributeValues[attributeName]!.isNotEmpty &&
-            variation.stock > 0).map((variation)=> variation.attributeValues[attributeName])
+            variation.stock > 0)
+        .map((variation) => variation.attributeValues[attributeName])
         .toSet();
     return availableVariationAttributeValues;
-
   }
 
   void getProductVariationStockStatus() {

@@ -15,9 +15,9 @@ class UserProfileTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      final controller = Get.put(UserProfile());
+      final controller = Get.put(UserProfileController());
     return ListTile(
-      leading:  const CircularImage(image: 'assets/splash/lightpic.jpg',
+      leading:  const CircularImage(image: 'assets/splash/lightpic.jpg',isNetworkImage: false,
         height: 50,
         width: 50,
         padding: 0,

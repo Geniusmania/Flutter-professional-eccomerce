@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ui/MODEL_NEW/brand_model.dart';
 import 'package:ui/commons/widgets/appbar/appBar.dart';
 import 'package:ui/commons/widgets/roudedContainer/rounded_container.dart';
 import 'package:ui/features/authentication/login_and_signup/success/success_screen.dart';
@@ -16,7 +17,7 @@ import '../../../utils/constants/sizes.dart';
 
 class CheckoutScreen extends StatelessWidget {
   const CheckoutScreen({super.key});
-
+//final BrandModel brand;
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
@@ -60,7 +61,7 @@ class CheckoutScreen extends StatelessWidget {
       bottomNavigationBar:Padding(
     padding: const EdgeInsets.all(24),
     child: ElevatedButton(onPressed: ()=> Get.to(()=> SuccessScreen(
-        onPressed:()=> Get.offAll(()=> const ButtonNavBar()),
+        onPressed:()=> Get.offAll(()=>  const ButtonNavBar()),
         image: 'assets/images/succesful.png', title: 'Payment Successful', subtitle: 'Your product will be shipped soon!')), child: const Text('Checkout GHC464'),),
     ),
     );

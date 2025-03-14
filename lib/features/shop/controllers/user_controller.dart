@@ -17,7 +17,7 @@ GlobalKey<FormState> formKey = GlobalKey();
 Future<void> update() async {
 
  try{
-   await UserProfile.instance.updateUserName(first_name.text.trim(), last_name.text.trim());
+   await UserProfileController.instance.updateUserName(first_name.text.trim(), last_name.text.trim());
 
    Loaders.successSnackBar(
        title: 'Update successful',

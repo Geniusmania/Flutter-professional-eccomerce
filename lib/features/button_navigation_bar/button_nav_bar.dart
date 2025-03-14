@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:ui/MODEL_NEW/brand_model.dart';
 import 'package:ui/features/screens/home/home_screen.dart';
 import 'package:ui/features/screens/wishlist/wish_list.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
@@ -8,8 +9,8 @@ import '../screens/Store/shop.dart';
 import '../screens/personalization/settings/settings.dart';
 
 class ButtonNavBar extends StatelessWidget {
-  const ButtonNavBar({super.key});
-
+  const ButtonNavBar({super.key, });
+//final BrandModel brand;
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(NavBarScreens());
@@ -22,7 +23,7 @@ class ButtonNavBar extends StatelessWidget {
             selectedIndex: controller.selectedIndex.value,
             onDestinationSelected: (index) =>
                 controller.selectedIndex.value = index,
-                indicatorColor: dark ? Colors.white.withOpacity(0.1) : Colors.black.withOpacity(0.1),
+                indicatorColor: dark ? Colors.white.withValues(alpha: 0.1) : Colors.black.withValues(alpha: 0.1),
             destinations: const [
               NavigationDestination(icon: Icon(Iconsax.home), label: 'Home'),
               NavigationDestination(icon: Icon(Iconsax.shop), label: 'Store'),

@@ -34,9 +34,9 @@ class CategoryTab extends StatelessWidget {
                   ],
                 ),
                 SectionHeading(title: 'You might like', onPressed: () {}),
-                GridLayout(
-                    itemCount: 4,
-                    itemBuilder: (_, index) =>  ProductCardVertical(product: ProductModel.empty(),))
+                // GridLayout(
+                //     itemCount: 4,
+                //     itemBuilder: (_, index) =>  ProductCardVertical(product: ProductModel.empty(),))
               ],
             ),
           ),

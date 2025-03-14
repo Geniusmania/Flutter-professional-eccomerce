@@ -9,6 +9,7 @@ import 'package:ui/features/screens/product_details/widgets/product_image_slider
 import 'package:ui/features/screens/product_details/widgets/product_meta_data.dart';
 import 'package:ui/features/screens/product_details/widgets/rating_and_share.dart';
 import 'package:ui/features/screens/product_review/product_review.dart';
+import 'package:ui/features/shop/controllers/product_controller.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
 
 import '../../../MODEL_NEW/product_model.dart';
@@ -21,66 +22,89 @@ class ProductDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HelperFunctions.isDarkMode(context);
+    final dark = HelperFunctions.isDarkMode(context);
+    final cartController = Get.find<ProductController>(); // For checkout functionality
+
     return Scaffold(
       bottomNavigationBar: const BottomAddToCart(),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // product image slider
-
+            // Product image slider
             ProductImageSlider(product: product),
 
-            //...........product Details.......//
+            // Product Details
             Padding(
               padding: const EdgeInsets.only(right: 24, left: 24, bottom: 24),
               child: Column(
                 children: [
-                  //..........Rating and share...................//
+                  // Rating and share
                   const RatingAndShare(),
-                  //.......price, title stock and brand.........//
+
+                  // Price, title, stock and brand
                   ProductMetaData(product: product),
                   const SizedBox(height: 10),
-                  //..........attributes................//
-                  if (product.productType == ProductType.variable.name)
+
+                  // Product attributes (if it's a variable product)
+                 // if (product.productType == ProductType.variable.name)
                     ProductAttributes(product: product),
-                  if (product.productType == ProductType.variable.name)
                     const SizedBox(height: 30),
-                  //..........Checkout Button ...........//
+
+
+                  // Checkout Button
                   SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                          onPressed: () {}, child: const Text('Checkout'))),
+                          onPressed: () {
+                            // Implement checkout functionality
+                            Get.snackbar(
+                              'Checkout',
+                              'Processing your order...',
+                              snackPosition: SnackPosition.BOTTOM,
+                            );
+                            // Add your checkout logic here
+                          },
+                          child: const Text('Checkout')
+                      )
+                  ),
 
-                  //..........Description.................//
+                  // Description
                   const SizedBox(height: 32),
                   const SectionHeading(
                       title: 'Description',
                       showActionButton: false,
-                      padding: EdgeInsets.zero),
-                  ReadMoreText(
-                    product.description ?? '',
-                    trimLines: 2,
-                    trimMode: TrimMode.Line,
-                    trimCollapsedText: 'Show more',
-                    trimExpandedText: 'Less',
-                    lessStyle: const TextStyle(
-                        fontSize: 14, fontWeight: FontWeight.w800),
-                    moreStyle: const TextStyle(
-                        fontSize: 14, fontWeight: FontWeight.w800),
+                      padding: EdgeInsets.zero
                   ),
+                  if (product.description != null && product.description!.isNotEmpty)
+                    ReadMoreText(
+                      product.description!,
+                      trimLines: 2,
+                      trimMode: TrimMode.Line,
+                      trimCollapsedText: 'Show more',
+                      trimExpandedText: 'Less',
+                      lessStyle: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w800
+                      ),
+                      moreStyle: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w800
+                      ),
+                    ),
 
-                  //............Reviews..............//
-
+                  // Reviews section
                   const Divider(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const SectionHeading(
-                          title: 'Reviews (825)', showActionButton: false),
+                          title: 'Reviews (825)',
+                          showActionButton: false
+                      ),
                       IconButton(
                           onPressed: () => Get.to(() => const ProductReview()),
-                          icon: const Icon(Iconsax.arrow_right_3, size: 18))
+                          icon: const Icon(Iconsax.arrow_right_3, size: 18)
+                      )
                     ],
                   ),
                   const SizedBox(height: 16),

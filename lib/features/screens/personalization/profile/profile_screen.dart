@@ -16,7 +16,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(UserProfile());
+    final controller = Get.put(UserProfileController());
     final dark = HelperFunctions.isDarkMode(context);
     return Scaffold(
       appBar:  Appbar(
@@ -32,7 +32,7 @@ class ProfileScreen extends StatelessWidget {
                   width: double.infinity,
                   child: Column(
                     children: [
-                      const CircularImage(image: 'assets/images/My_loGo.PNG'),
+                      const CircularImage(image: 'assets/images/My_loGo.PNG',isNetworkImage: false,),
                       TextButton(
                           onPressed: () {},
                           child: Text(

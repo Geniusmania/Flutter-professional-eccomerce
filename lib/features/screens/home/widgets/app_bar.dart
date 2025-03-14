@@ -15,8 +15,9 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget{
 
   @override
   Widget build(BuildContext context) {
-   final controller = Get.put(UserProfile());
+   final controller = Get.put(UserProfileController());
    final token = controller.deviceStorage.read('token');
+   print(token);
 
    if (token != null){ controller.getUserProfile(token);}
     return Padding(

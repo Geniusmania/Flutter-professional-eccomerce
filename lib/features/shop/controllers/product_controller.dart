@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:ui/MODEL_NEW/product_model.dart';
 import 'package:ui/data/repositories.authentication/product_repository.dart';
@@ -5,7 +6,7 @@ import 'package:ui/utils/constants/enums.dart';
 
 class ProductController extends GetxController {
   static ProductController get instance => Get.find();
-  static ProductRepository controller = Get.put(ProductRepository());
+  final controller =Get.put(ProductRepository());
 
   final isLoading = false.obs;
   RxList<ProductModel> allProducts = <ProductModel>[].obs;
@@ -24,8 +25,12 @@ class ProductController extends GetxController {
       final products = await controller.getProducts();
       allProducts.assignAll(products);
     } catch (e) {
-      print(e.toString());
-      print("Error fetching products: ${e.toString()}");
+      if (kDebugMode) {
+        print(e.toString());
+      }
+      if (kDebugMode) {
+        print("Error fetching products: ${e.toString()}");
+      }
       throw Exception(e.toString());
     } finally {
       isLoading.value = false;

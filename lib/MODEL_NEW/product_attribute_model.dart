@@ -16,11 +16,14 @@ class ProductAttributeModel {
     if(data.isEmpty){
       return ProductAttributeModel();
     }
+
     return ProductAttributeModel(
       name: data.containsKey('name')? data['name']:'',
       values: data['values'] != null ? List<String>.from(data['values']) : [],
     );
   }
+
+
 
   /// Converts ProductAttributeModel instance to JSON
   Map<String, dynamic> toJson() {
