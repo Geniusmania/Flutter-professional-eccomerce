@@ -15,6 +15,7 @@ import 'package:ui/utils/constants/enums.dart';
 import 'package:ui/utils/constants/sizes.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
 
+import '../../favourite_icon/favourite_icon.dart';
 import '../../title_and_icon/title_and_icon.dart';
 
 class ProductCardVertical extends StatelessWidget {
@@ -54,35 +55,35 @@ class ProductCardVertical extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
 
-                  //.....................//
-                  //discount percentage
+                  //..........discount percentage...........//
+
                   if (salePercentage != null)
                     Positioned(
-                        left: 10,
-                        top: 5,
-                        child: RoundedContainer(
-                            radius: AppSize.sm,
-                            backgroundColor:
-                                AppColors.secondry.withValues(alpha: 0.9),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: AppSize.sm, vertical: AppSize.xs),
-                            child: Text(
-                              '$salePercentage%',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelLarge!
-                                  .apply(color: Colors.black),
-                            ))),
+                      left: 10,
+                      top: 5,
+                      child: RoundedContainer(
+                        radius: AppSize.sm,
+                        backgroundColor:
+                            AppColors.secondry.withValues(alpha: 0.9),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: AppSize.sm, vertical: AppSize.xs),
+                        child: Text(
+                          '$salePercentage%',
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelLarge!
+                              .apply(color: Colors.black),
+                        ),
+                      ),
+                    ),
 
-                  //wislist heart
+                  //wishlist heart
 
                   const Positioned(
-                      top: 0,
-                      right: 0,
-                      child: CircularIcon(
-                        icon: Iconsax.heart5,
-                        color: Colors.red,
-                      ))
+                    top: 0,
+                    right: 0,
+                    child: FavouriteIcon(),
+                  )
                 ],
               ),
             ),
@@ -158,3 +159,5 @@ class ProductCardVertical extends StatelessWidget {
     );
   }
 }
+
+

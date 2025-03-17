@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui/commons/widgets/appbar/appBar.dart';
 import 'package:ui/data/repositories.authentication/product_repository.dart';
-import 'package:ui/features/shop/controllers/all_products_controller.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../MODEL_NEW/product_model.dart';
 import '../../../commons/widgets/products/sortable/sortable_products.dart';

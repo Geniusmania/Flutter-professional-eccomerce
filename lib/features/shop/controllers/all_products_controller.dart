@@ -1,8 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:ui/MODEL_NEW/product_model.dart';
 import 'package:ui/data/repositories.authentication/product_repository.dart';
-import 'package:ui/features/shop/controllers/product_controller.dart';
 import 'package:ui/utils/popups/loaders.dart';
 
 class AllProductsController extends GetxController {
@@ -11,7 +9,6 @@ class AllProductsController extends GetxController {
 
   Future<List<ProductModel>> fetchProductsByQuery(String query) async {
     try {
-      if (query == null) return [];
       final products = await repository.fetchProductsByQuery(query);
       return products;
     } catch (e) {

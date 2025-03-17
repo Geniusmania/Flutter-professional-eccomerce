@@ -10,7 +10,6 @@ import 'package:ui/features/screens/home/widgets/search_bar.dart';
 import 'package:ui/features/screens/home/widgets/shopping_counter.dart';
 import 'package:ui/features/shop/controllers/category_controller.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
-import '../../../MODEL_NEW/brand_model.dart';
 import '../../../commons/widgets/brands/brand_card.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
@@ -109,16 +108,7 @@ class StoreScreen extends StatelessWidget {
                     ]))
               ];
             },
-            body: const TabBarView(children: [
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab()
-            ])),
+            body:  TabBarView(children: categories.map((category)=> CategoryTab(category: category)).toList())),
       ),
     );
   }

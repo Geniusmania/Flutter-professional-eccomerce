@@ -37,7 +37,7 @@ class UserProfileController extends GetxController {
   Future<void> getUserProfile(String token) async {
     try {
       final response = await http.get(
-        Uri.parse('http://192.168.30.35:3000/api/users/profile'),
+        Uri.parse('${Api.URL}/api/users/profile'),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',

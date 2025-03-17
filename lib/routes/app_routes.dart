@@ -5,7 +5,6 @@ import 'package:ui/features/authentication/login_and_signup/login/login.dart';
 import 'package:ui/features/authentication/login_and_signup/pasword/reset_password.dart';
 import 'package:ui/features/authentication/login_and_signup/register/register.dart';
 import 'package:ui/features/authentication/onboarding/onboarding.dart';
-import 'package:ui/features/screens/Store/shop.dart';
 import 'package:ui/features/screens/cart/cart.dart';
 import 'package:ui/features/screens/checkout/checkout.dart';
 import 'package:ui/features/screens/home/home_screen.dart';

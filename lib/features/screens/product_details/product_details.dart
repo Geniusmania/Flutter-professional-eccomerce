@@ -13,7 +13,6 @@ import 'package:ui/features/shop/controllers/product_controller.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
 
 import '../../../MODEL_NEW/product_model.dart';
-import '../../../utils/constants/enums.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   const ProductDetailScreen({super.key, required this.product});

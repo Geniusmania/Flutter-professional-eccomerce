@@ -1,13 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:ui/data/repositories.authentication/authentication_repository.dart';
-import 'package:ui/data/repositories.authentication/user_repository.dart';
 import 'package:ui/features/authentication/login_and_signup/emailVerification/email_verification.dart';
-import 'package:ui/models/usermodel/usermodel.dart';
 import 'package:ui/utils/popups/full_screen_loader.dart';
 import 'package:ui/utils/popups/loaders.dart';
 import '../../../../utils/helpers/network_manager.dart';
-import '../../../../utils/images.dart';
 
 class RegisterController extends GetxController {
   static RegisterController get instance => Get.find();

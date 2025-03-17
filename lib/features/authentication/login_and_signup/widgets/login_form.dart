@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ui/features/authentication/login_and_signup/login/controller/login_controller.dart';
 import 'package:ui/features/authentication/login_and_signup/pasword/forget_password.dart';
 import 'package:ui/features/authentication/login_and_signup/register/register.dart';
-import 'package:ui/features/button_navigation_bar/button_nav_bar.dart';
 import 'package:ui/utils/constants/sizes.dart';
 import 'package:ui/utils/constants/texts.dart';
 

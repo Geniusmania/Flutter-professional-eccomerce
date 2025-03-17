@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:ui/bindings/general_bindings.dart';
-import 'package:ui/features/authentication/onboarding/onboarding.dart';
 import 'package:ui/firebase_options.dart';
 import 'package:ui/routes/app_routes.dart';
 import 'package:ui/utils/constants/colors.dart';

@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:ui/MODEL_NEW/brand_model.dart';
-import 'MODEL_NEW/category_model.dart';
 import 'constant_api.dart';
 
 class Test {

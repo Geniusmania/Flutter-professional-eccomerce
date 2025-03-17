@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:ui/MODEL_NEW/brand_model.dart';
 import 'package:ui/features/screens/home/home_screen.dart';
 import 'package:ui/features/screens/wishlist/wish_list.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';

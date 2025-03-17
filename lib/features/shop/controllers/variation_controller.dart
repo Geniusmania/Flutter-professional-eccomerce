@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:ui/MODEL_NEW/product_variation_model.dart';
 import 'package:ui/features/shop/controllers/product_detail_controller.dart';
 

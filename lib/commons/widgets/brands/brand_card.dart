@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:ui/MODEL_NEW/brand_model.dart';
 
 import '../../../features/containers/circular_container.dart';
-import '../../../features/shop/controllers/brand_controller.dart';
 import '../../../utils/constants/enums.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_functions.dart';

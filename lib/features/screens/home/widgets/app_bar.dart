@@ -6,7 +6,6 @@ import 'package:ui/features/screens/home/widgets/shopping_counter.dart';
 import 'package:ui/utils/constants/colors.dart';
 import 'package:ui/utils/constants/sizes.dart';
 import 'package:ui/utils/constants/texts.dart';
-import 'package:ui/utils/helpers/helper_functions.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget{
   const HomeAppBar({

@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../MODEL_NEW/product_model.dart';
-import '../../../../features/shop/controllers/product_controller.dart';
-import '../../../../utils/constants/sizes.dart';
 import '../../layouts/gridLayout/grid_layout.dart';
 import '../products_cards/product_card_vertical.dart';
 

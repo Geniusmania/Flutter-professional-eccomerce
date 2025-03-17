@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:ui/data/repositories.authentication/banners_repository.dart';
 import 'package:ui/utils/popups/loaders.dart';

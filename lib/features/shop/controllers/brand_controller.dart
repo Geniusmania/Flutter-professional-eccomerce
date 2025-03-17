@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:ui/MODEL_NEW/brand_model.dart';
+import 'package:ui/MODEL_NEW/category_model.dart';
 import 'package:ui/MODEL_NEW/product_model.dart';
 import 'package:ui/data/repositories.authentication/product_repository.dart';
 import 'package:ui/utils/popups/loaders.dart';
@@ -39,6 +40,16 @@ class BrandController extends GetxController {
     try{
       final product =await ProductRepository.instance.getProductsForBrand(brandId);
       return product;
+    }catch(e){
+      Loaders.errorSnackBar(title: 'Sorry!',message: e.toString());
+      return [];
+    }
+  }
+
+  Future<List<BrandModel>> getBrandForCategory(String categoryId)async{
+    try{
+      final brands = await brandRepository.getBrandsForCategory(categoryId);
+      return brands;
     }catch(e){
       Loaders.errorSnackBar(title: 'Sorry!',message: e.toString());
       return [];

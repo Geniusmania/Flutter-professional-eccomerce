@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:ui/MODEL_NEW/category_model.dart';
+import 'package:ui/MODEL_NEW/product_model.dart';
+import 'package:ui/data/repositories.authentication/product_repository.dart';
 import '../../../data/repositories.authentication/category_repository.dart';
 import '../../../utils/popups/loaders.dart';
 
@@ -33,4 +35,17 @@ class CategoryController extends GetxController {
       isLoading.value = false;
     }
   }
+
+  //get category or sub-category products
+
+
+Future<List<ProductModel>>getCategoryProducts(String categoryId)async{
+    try{
+      final products = await ProductRepository.instance.getProductForCategory(categoryId);
+      return products;
+    }catch(e){
+      Loaders.errorSnackBar(title: 'Sorry!', message: e.toString());
+      return [];
+    }
+}
 }

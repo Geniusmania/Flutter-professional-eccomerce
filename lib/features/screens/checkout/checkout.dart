@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ui/MODEL_NEW/brand_model.dart';
 import 'package:ui/commons/widgets/appbar/appBar.dart';
 import 'package:ui/commons/widgets/roudedContainer/rounded_container.dart';
 import 'package:ui/features/authentication/login_and_signup/success/success_screen.dart';

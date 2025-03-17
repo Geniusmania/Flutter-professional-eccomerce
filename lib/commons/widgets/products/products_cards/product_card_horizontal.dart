@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:ui/commons/widgets/favourite_icon/favourite_icon.dart';
 import 'package:ui/commons/widgets/products/product_price/product_price.dart';
 import 'package:ui/commons/widgets/roudedContainer/rounded_container.dart';
 import 'package:ui/commons/widgets/texts/product_title_text.dart';
@@ -59,10 +60,8 @@ class ProductCardHorizontal extends StatelessWidget {
                 const Positioned(
                     top: -2,
                     right: -10,
-                    child: CircularIcon(
-                      icon: Iconsax.heart5,
-                      color: Colors.red,
-                    ))
+                    child:
+                FavouriteIcon())
               ],
             ),
           ),

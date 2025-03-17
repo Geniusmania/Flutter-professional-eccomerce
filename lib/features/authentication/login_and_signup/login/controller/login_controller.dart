@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui/data/repositories.authentication/authentication_repository.dart';
@@ -59,7 +60,9 @@ await AuthenticationRepository.instance.login(emailController.text.trim(), passw
   } catch (e) {
    //  FullScreenLoader.stopLoading();
     Loaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-    print('login error: $e');
+    if (kDebugMode) {
+      print('login error: $e');
+    }
   }
 }
 

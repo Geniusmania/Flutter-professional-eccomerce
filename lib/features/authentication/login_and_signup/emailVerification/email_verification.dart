@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui/features/authentication/login_and_signup/login/login.dart';
 import 'package:ui/features/authentication/login_and_signup/register/verify_email_controller.dart';
-import 'package:ui/features/authentication/login_and_signup/success/success_screen.dart';
 import 'package:ui/utils/constants/sizes.dart';
 import 'package:ui/utils/constants/texts.dart';
 

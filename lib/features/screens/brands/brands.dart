@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:ui/commons/widgets/appbar/appBar.dart';
 import 'package:ui/commons/widgets/brands/brand_card.dart';
 import 'package:ui/commons/widgets/layouts/gridLayout/grid_layout.dart';
@@ -9,7 +8,6 @@ import 'package:ui/features/screens/brands/brand_products.dart';
 import 'package:ui/features/shop/controllers/brand_controller.dart';
 import 'package:ui/utils/constants/sizes.dart';
 
-import '../../../MODEL_NEW/brand_model.dart';
 import '../../../commons/widgets/sectionHeader/section_header.dart';
 
 class Brands extends StatelessWidget {

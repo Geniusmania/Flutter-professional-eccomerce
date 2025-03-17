@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ui/commons/widgets/appbar/appBar.dart';
 import 'package:ui/commons/widgets/brands/brand_card.dart';
 import 'package:ui/commons/widgets/products/sortable/sortable_products.dart';
-import 'package:ui/commons/widgets/shimmer_effect/vertical_product_shimmer.dart';
 import 'package:ui/features/shop/controllers/brand_controller.dart';
-
 import '../../../MODEL_NEW/brand_model.dart';
 import '../../../utils/constants/sizes.dart';
 
@@ -38,10 +36,7 @@ final BrandModel brand;
                   }
 
                   final brandProducts = snapshot.data!;
-                  print("UI received ${brandProducts.length} products");
-                  for (var product in brandProducts) {
-                    print("Passing to UI: ${product.title}, Brand: ${product.brand?.name}, Brand ID: ${product.brand?.id}");
-                  }
+
                   return Padding(
                     padding: const EdgeInsets.all(0),
                     child: SortedProducts(product: brandProducts),

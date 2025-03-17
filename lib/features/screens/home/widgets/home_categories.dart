@@ -5,7 +5,6 @@ import 'package:ui/features/screens/sub_category/sub_category.dart';
 import 'package:ui/features/shop/controllers/category_controller.dart';
 
 import '../../../../commons/widgets/shimmer_effect/category_shimer.dart';
-import '../../../../data/repositories.authentication/category_repository.dart';
 
 class HomeCategories extends StatelessWidget {
   const HomeCategories({
