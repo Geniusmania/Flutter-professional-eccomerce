@@ -16,27 +16,33 @@ class AuthenticationRepository extends GetxController {
 
   @override
   void onReady() {
-    screenRedirect();
-  }
-
-  /// **Screen Redirection Logic**
-  void screenRedirect() async {
     final isFirstTime = deviceStorage.read('isFirstTime') ?? true;
-    final token = deviceStorage.read('token'); // Check if user is logged in
-//initialize user specific storage
-    await LocalStorage.init(token);
-
-    if (token != null && token.isNotEmpty) {
-      Get.offAll(() => const ButtonNavBar()); // User is logged in
+    if (isFirstTime) {
+      deviceStorage.write('isFirstTime', false);
+      Get.offAll(() => const Onboarding()); // Show onboarding screen
     } else {
-      if (isFirstTime) {
-        deviceStorage.write('isFirstTime', false);
-        Get.offAll(() => const Onboarding()); // Show onboarding screen
-      } else {
-        Get.offAll(() => const LoginScreen()); // Show login screen
-      }
+      Get.offAll(() => const LoginScreen()); // Show login screen
     }
   }
+
+//   /// **Screen Redirection Logic**
+//   void screenRedirect() async {
+//     final isFirstTime = deviceStorage.read('isFirstTime') ?? true;
+//     final token = deviceStorage.read('token'); // Check if user is logged in
+// //initialize user specific storage
+//     //await LocalStorage.init(token);
+//
+//     if (token != null && token.isNotEmpty) {
+//       Get.offAll(() => const ButtonNavBar()); // User is logged in
+//     } else {
+//       if (isFirstTime) {
+//         deviceStorage.write('isFirstTime', false);
+//         Get.offAll(() => const Onboarding()); // Show onboarding screen
+//       } else {
+//         Get.offAll(() => const LoginScreen()); // Show login screen
+//       }
+//     }
+//   }
 
   /// **Register User**
   Future<UserModel?> registerUser(String phone, String email, String password,

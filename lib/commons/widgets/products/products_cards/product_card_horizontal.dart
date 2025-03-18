@@ -8,6 +8,7 @@ import 'package:ui/commons/widgets/title_and_icon/title_and_icon.dart';
 import 'package:ui/utils/constants/colors.dart';
 import 'package:ui/utils/constants/sizes.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
+import '../../../../MODEL_NEW/product_model.dart';
 import '../../icon/circular_icon.dart';
 import '../../rounded_image/rounded_image.dart';
 
@@ -21,7 +22,7 @@ class ProductCardHorizontal extends StatelessWidget {
       width: 310,
       padding: const EdgeInsets.all(1),
       decoration: BoxDecoration(
-       // boxShadow: [ShadowStyle.horizontalProductShadow],
+
         color: dark ? AppColors.darkergrey : AppColors.lightContainer,
       ),
       child: Row(
@@ -57,11 +58,11 @@ class ProductCardHorizontal extends StatelessWidget {
 
                 //wishlist heart
 
-                const Positioned(
-                    top: -2,
-                    right: -10,
-                    child:
-                FavouriteIcon())
+                //  const Positioned(
+                //     top: -2,
+                //     right: -10,
+                //     child:
+                // FavouriteIcon(productId:'',))
               ],
             ),
           ),

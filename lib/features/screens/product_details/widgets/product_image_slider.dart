@@ -85,9 +85,9 @@ class ProductImageSlider extends StatelessWidget {
             ),
 
             //................appbar.............//
-            const Appbar(
+            Appbar(
               showBackArrow: true,
-              actions: [FavouriteIcon()],
+              //actions: [FavouriteIcon(productId: product.id,)],
             )
           ],
         ),

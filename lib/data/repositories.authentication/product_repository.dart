@@ -54,6 +54,7 @@ class ProductRepository extends GetxController {
       throw Exception(e.toString());
     }
   }
+
   Future<List<ProductModel>> getProductForCategory(String categoryId) async {
     try {
       print("Fetching products for category ID: $categoryId");
@@ -64,12 +65,15 @@ class ProductRepository extends GetxController {
 
       if (response.statusCode == 200) {
         final List<dynamic> data = jsonDecode(utf8.decode(response.bodyBytes));
-        final List<ProductModel> categoryProducts = data.map((item) => ProductModel.fromJson(item)).toList();
+        final List<ProductModel> categoryProducts =
+            data.map((item) => ProductModel.fromJson(item)).toList();
 
-        print("Filtered Products for Category ID $categoryId: ${categoryProducts.length}");
+        print(
+            "Filtered Products for Category ID $categoryId: ${categoryProducts.length}");
         return categoryProducts;
       } else {
-        throw Exception('Failed to fetch products for category $categoryId: ${response.statusCode} - ${response.body}');
+        throw Exception(
+            'Failed to fetch products for category $categoryId: ${response.statusCode} - ${response.body}');
       }
     } catch (e) {
       Get.log('Error fetching category products: $e');
@@ -77,10 +81,28 @@ class ProductRepository extends GetxController {
     }
   }
 
+  Future<List<ProductModel>> getFavouriteProducts(
+      List<String> productIds) async {
+    if (productIds.isEmpty) return [];
+
+    try {
+      final response = await http.get(
+          Uri.parse('${Api.URL}/api/products?ids=${productIds.join(",")}'));
+
+      if (response.statusCode == 200) {
+        final List<dynamic> data = jsonDecode(response.body);
+        return data.map((item) => ProductModel.fromJson(item)).toList();
+      } else {
+        throw Exception('Failed to fetch favorite products');
+      }
+    } catch (e) {
+      Get.log('Error fetching favorite products: $e');
+      return [];
+    }
+  }
+
   Future<List<ProductModel>> getProductsForBrand(String brandId) async {
     try {
-
-
       // First try to get all products (since server filtering seems not to work)
       final response = await http.get(Uri.parse('${Api.URL}/api/products'));
 
@@ -88,14 +110,14 @@ class ProductRepository extends GetxController {
         final List<dynamic> data = jsonDecode(response.body);
 
         // Convert to ProductModel list
-        final List<ProductModel> allProducts = data.map((item) => ProductModel.fromJson(item)).toList();
+        final List<ProductModel> allProducts =
+            data.map((item) => ProductModel.fromJson(item)).toList();
 
         // Apply client-side filtering
         final List<ProductModel> brandProducts = allProducts.where((product) {
           // Check if brand is not null and its id matches the requested brandId
           return product.brand != null && product.brand!.id == brandId;
         }).toList();
-
 
         return brandProducts;
       } else {
@@ -106,5 +128,4 @@ class ProductRepository extends GetxController {
       return [];
     }
   }
-
 }
