@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:ui/data/repositories.authentication/authentication_repository.dart';
 import 'package:ui/features/authentication/login_and_signup/emailVerification/email_verification.dart';
@@ -74,7 +75,9 @@ Future<void> register() async {
   } catch (e) {
     FullScreenLoader.stopLoading();
     Loaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-    print('Registration error: $e');
+    if (kDebugMode) {
+      print('Registration error: $e');
+    }
   }
 }
 

@@ -16,33 +16,27 @@ class AuthenticationRepository extends GetxController {
 
   @override
   void onReady() {
+    screenRedirect();
+  }
+//
+//   /// **Screen Redirection Logic**
+  void screenRedirect() async {
     final isFirstTime = deviceStorage.read('isFirstTime') ?? true;
-    if (isFirstTime) {
-      deviceStorage.write('isFirstTime', false);
-      Get.offAll(() => const Onboarding()); // Show onboarding screen
+    final token = deviceStorage.read('token');
+
+    if (token != null && token.isNotEmpty) {
+      await LocalStorage.init(token); // Initialize only if token exists
+      Get.offAll(() => const ButtonNavBar());
     } else {
-      Get.offAll(() => const LoginScreen()); // Show login screen
+      if (isFirstTime) {
+        deviceStorage.write('isFirstTime', false);
+        Get.offAll(() => const Onboarding());
+      } else {
+        Get.offAll(() => const LoginScreen());
+      }
     }
   }
 
-//   /// **Screen Redirection Logic**
-//   void screenRedirect() async {
-//     final isFirstTime = deviceStorage.read('isFirstTime') ?? true;
-//     final token = deviceStorage.read('token'); // Check if user is logged in
-// //initialize user specific storage
-//     //await LocalStorage.init(token);
-//
-//     if (token != null && token.isNotEmpty) {
-//       Get.offAll(() => const ButtonNavBar()); // User is logged in
-//     } else {
-//       if (isFirstTime) {
-//         deviceStorage.write('isFirstTime', false);
-//         Get.offAll(() => const Onboarding()); // Show onboarding screen
-//       } else {
-//         Get.offAll(() => const LoginScreen()); // Show login screen
-//       }
-//     }
-//   }
 
   /// **Register User**
   Future<UserModel?> registerUser(String phone, String email, String password,
@@ -85,7 +79,7 @@ class AuthenticationRepository extends GetxController {
       final responseData = jsonDecode(utf8.decode(response.bodyBytes));
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        final token = responseData['token'];
+        final token = responseData['token']??"";
         final user = UserModel.fromJson(responseData['user']);
 
         deviceStorage.write('token', token); // Store token

@@ -79,11 +79,11 @@ class ProductCardVertical extends StatelessWidget {
 
                   //wishlist heart
 
-                  //  Positioned(
-                  //   top: 0,
-                  //   right: 0,
-                  //   child: FavouriteIcon(productId: product.id),
-                  // )
+                   Positioned(
+                    top: 0,
+                    right: 0,
+                    child: FavouriteIcon(productId: product.id),
+                  )
                 ],
               ),
             ),

@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final userModel = userModelFromJson(jsonString);
-
 import 'dart:convert';
 
 UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str));
@@ -9,53 +5,69 @@ UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str));
 String userModelToJson(UserModel data) => json.encode(data.toJson());
 
 class UserModel {
-    String id;
-    String first_name;
-    String last_name;
-    String phone;
-    String email;
-    String password;
-    bool? isAdmin;
-    int v;
-    DateTime createdAt;
-    DateTime updatedAt;
+    String message;
+    User user;
+    String token;
 
     UserModel({
-        required this.id,
-        required this.first_name,
-        required this.last_name,
-        required this.phone,
-        required this.email,
-        required this.password,
-         this.isAdmin,
-        required this.v,
-        required this.createdAt,
-        required this.updatedAt,
+        required this.message,
+        required this.user,
+        required this.token,
     });
 
     factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
+        message: json["message"],
+        user: User.fromJson(json["user"]),
+        token: json["token"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "message": message,
+        "user": user.toJson(),
+        "token": token,
+    };
+}
+
+class User {
+    String id;
+    String firstName;
+    String lastName;
+    String? password;
+    String email;
+    String username;
+    String phone;
+    bool? isAdmin;
+
+    User({
+        required this.id,
+        required this.firstName,
+        required this.lastName,
+        this.password,
+        required this.email,
+        required this.username,
+        required this.phone,
+         this.isAdmin,
+    });
+
+    factory User.fromJson(Map<String, dynamic> json) => User(
         id: json["_id"],
-        first_name: json["first_name"],
-        last_name: json["last_name"],
-        phone: json["phone"],
-        email: json["email"],
+        firstName: json["first_name"],
+        lastName: json["last_name"],
         password: json["password"],
-        isAdmin: json["isAdmin"],
-        v: json["__v"],
-        createdAt: DateTime.parse(json["createdAt"])?? DateTime.now(),
-        updatedAt: DateTime.parse(json["updatedAt"])?? DateTime.now(),
+        email: json["email"],
+        username: json["username"],
+        phone: json["phone"],
+        isAdmin: json["isAdmin"]?? false,
     );
 
     Map<String, dynamic> toJson() => {
         "_id": id,
-        "first_name": first_name,
-        "last_name": last_name,
-        "phone": phone,
-        "email": email,
+        "first_name": firstName,
+        "last_name": lastName,
         "password": password,
+        "email": email,
+        "username": username,
+        "phone": phone,
         "isAdmin": isAdmin,
-        "__v": v,
-        "createdAt": createdAt.toIso8601String(),
-        "updatedAt": updatedAt.toIso8601String(),
     };
 }

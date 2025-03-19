@@ -28,15 +28,17 @@ class NetworkManager extends GetxController {
       Loaders.warningSnackBar(title: 'No internet connection');
     }
   }
-
   Future<bool> isConnected() async {
     try {
-      final results = await _connectivity.checkConnectivity();
-      return results.isNotEmpty && results.first != ConnectivityResult.none;
+      return await Future.microtask(() async {
+        final results = await _connectivity.checkConnectivity();
+        return results.isNotEmpty && results.first != ConnectivityResult.none;
+      });
     } on PlatformException catch (_) {
-      return false; // Handle exception safely
+      return false;
     }
   }
+
 
   @override
   void onClose() {

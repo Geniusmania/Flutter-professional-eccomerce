@@ -11,21 +11,16 @@ import 'package:get_storage/get_storage.dart';
 import 'data/repositories.authentication/authentication_repository.dart';
 
 void main() async {
-// widget Binding
-  final WidgetsBinding widgetsBinding =
-      WidgetsFlutterBinding.ensureInitialized();
-// local storage
+  WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
-// payment methods
-// native splash
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-// firebase
-// authentication
+  FlutterNativeSplash.preserve(widgetsBinding: WidgetsBinding.instance);
 
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
-  .then((FirebaseApp value) => Get.put(AuthenticationRepository()));
+  Get.put(AuthenticationRepository());
+
   runApp(const MyApp());
+  FlutterNativeSplash.remove();
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -40,7 +35,8 @@ class MyApp extends StatelessWidget {
       theme: GAppTheme.lightTheme,
       initialBinding: GeneralBindings(),
       getPages: AppRoutes.pages,
-      home: const Scaffold(backgroundColor: AppColors.primary,body: Center(child: CircularProgressIndicator(color: Colors.white))),
+      home: const Scaffold(backgroundColor: AppColors.primary,
+          body: Center(child: CircularProgressIndicator(color: Colors.white))),
     );
   }
 }

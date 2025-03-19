@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui/commons/widgets/appbar/appBar.dart';
@@ -9,9 +9,9 @@ import '../../../commons/widgets/products/sortable/sortable_products.dart';
 
 class AllProducts extends StatelessWidget {
   const AllProducts(
-      {super.key, this.query, required this.title, this.futureMethod});
+      {super.key, required this.title, this.futureMethod});
 
-  final Query? query;
+
   final String title;
   final Future<List<ProductModel>>? futureMethod;
 
