@@ -53,7 +53,7 @@ class AuthenticationRepository extends GetxController {
           'last_name': lastName,
           'username': username,
         }),
-      ).timeout(const Duration(seconds: 10));
+      );
 
       final responseData = jsonDecode(utf8.decode(response.bodyBytes));
 
@@ -74,7 +74,7 @@ class AuthenticationRepository extends GetxController {
         Uri.parse('${Api.URL}/api/auth/login'),
         headers: {'Content-Type': 'application/json; charset=UTF-8'},
         body: jsonEncode({'email': email, 'password': password}),
-      ).timeout(const Duration(seconds: 10));
+      );
 
       final responseData = jsonDecode(utf8.decode(response.bodyBytes));
 

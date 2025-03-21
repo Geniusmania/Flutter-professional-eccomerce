@@ -81,17 +81,21 @@ class ProductRepository extends GetxController {
     }
   }
 
-  Future<List<ProductModel>> getFavouriteProducts(
-      List<String> productIds) async {
+  Future<List<ProductModel>> getFavouriteProducts(List<String> productIds) async {
     if (productIds.isEmpty) return [];
 
     try {
-      final response = await http.get(
-          Uri.parse('${Api.URL}/api/products?ids=${productIds.join(",")}'));
+      // Get all products
+      final response = await http.get(Uri.parse('${Api.URL}/api/products'));
 
       if (response.statusCode == 200) {
         final List<dynamic> data = jsonDecode(response.body);
-        return data.map((item) => ProductModel.fromJson(item)).toList();
+        final List<ProductModel> allProducts =
+        data.map((item) => ProductModel.fromJson(item)).toList();
+
+        // Filter products by ID
+        return allProducts.where((product) =>
+            productIds.contains(product.id)).toList();
       } else {
         throw Exception('Failed to fetch favorite products');
       }

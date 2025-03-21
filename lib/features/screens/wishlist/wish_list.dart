@@ -45,6 +45,7 @@ class WishListScreen extends StatelessWidget {
                     snapshot.data == null ||
                     snapshot.data!.isEmpty) {
                   return AnimationLoaderWidget(
+
                     text: 'No favourites added!',
                     animation: 'assets/animations/empty.json',
                     onActionPressed: () => (() => Get.to(NavBarScreens())),

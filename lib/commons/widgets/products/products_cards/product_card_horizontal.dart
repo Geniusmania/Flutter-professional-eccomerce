@@ -5,6 +5,7 @@ import 'package:ui/commons/widgets/products/product_price/product_price.dart';
 import 'package:ui/commons/widgets/roudedContainer/rounded_container.dart';
 import 'package:ui/commons/widgets/texts/product_title_text.dart';
 import 'package:ui/commons/widgets/title_and_icon/title_and_icon.dart';
+import 'package:ui/features/shop/controllers/product_controller.dart';
 import 'package:ui/utils/constants/colors.dart';
 import 'package:ui/utils/constants/sizes.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
@@ -13,11 +14,13 @@ import '../../icon/circular_icon.dart';
 import '../../rounded_image/rounded_image.dart';
 
 class ProductCardHorizontal extends StatelessWidget {
-  const ProductCardHorizontal({super.key});
-
+  const ProductCardHorizontal({super.key, required  this.product});
+final ProductModel product;
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
+    final  controller = ProductController.instance;
+    final salePercentage = controller.calculateSalePercentage(product.price, product.salePrice);
     return Container(
       width: 310,
       padding: const EdgeInsets.all(1),
@@ -33,23 +36,24 @@ class ProductCardHorizontal extends StatelessWidget {
             backgroundColor: dark ? AppColors.dark : AppColors.light,
             child: Stack(
               children: [
-                const SizedBox(
+                 SizedBox(
                   height: 120,
                   width: 120,
                   child: RoundedImage(
+                    isNetworkImage: true,
                       applyImageRadius: true,
-                      imageUrl: 'assets/images/shoe1.jpg'),
-                ),
+                      imageUrl: product.thumbnail),
+                ),if(salePercentage != null)
                 Positioned(
                     // left: 0,
                     top: 2,
                     child: RoundedContainer(
                         radius: AppSize.sm,
-                        backgroundColor: AppColors.secondry.withOpacity(0.9),
+                        backgroundColor: AppColors.secondry.withValues(alpha: 0.9),
                         padding: const EdgeInsets.symmetric(
                             horizontal: AppSize.sm, vertical: AppSize.xs),
                         child: Text(
-                          '20%',
+                          '$salePercentage%',
                           style: Theme.of(context)
                               .textTheme
                               .labelLarge!
@@ -58,11 +62,11 @@ class ProductCardHorizontal extends StatelessWidget {
 
                 //wishlist heart
 
-                //  const Positioned(
-                //     top: -2,
-                //     right: -10,
-                //     child:
-                // FavouriteIcon(productId:'',))
+                  Positioned(
+                    top: -2,
+                    right: -10,
+                    child:
+                FavouriteIcon(productId:product.id,))
               ],
             ),
           ),
@@ -75,19 +79,19 @@ class ProductCardHorizontal extends StatelessWidget {
                 children: [
                   Column(crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const ProductTitleText(
-                        title: 'Green balanciaga classic shoe ',
+                       ProductTitleText(
+                        title: product.title,
                         smallSize: true,
                       ),
                       const SizedBox(height: AppSize.spaceBtwTtems / 2),
-                      BrandTitleWithIcon(title: 'Balanciaga',textColor: dark? AppColors.light: null,)
+                      BrandTitleWithIcon(title: product.brand!.name,textColor: dark? AppColors.light: null,)
                     ],
                   ),
                   const Spacer(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                    const Flexible(child: ProductPrice(price: '158' )),
+                     Flexible(child: ProductPrice(price: controller.getProductPrice(product))),
                     Container(
                       decoration: const BoxDecoration(
                           color: AppColors.dark,

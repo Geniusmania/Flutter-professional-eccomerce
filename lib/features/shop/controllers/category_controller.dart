@@ -37,11 +37,24 @@ class CategoryController extends GetxController {
   }
 
   //get category or sub-category products
+  Future<List<CategoryModel>> getSubCategories(String categoryId) async {
+    try {
+      print("Calling repository for subcategories of category ID: $categoryId");  // ✅ Debugging
+      final subcategories = await categoryRepository.getSubCategories(categoryId);
+
+      print("Returned Subcategories Count: ${subcategories.length}");  // ✅ Debugging
+      return subcategories;
+    } catch (e) {
+      Loaders.errorSnackBar(title: 'Sorry!', message: e.toString());
+      return [];
+    }
+  }
 
 
 Future<List<ProductModel>>getCategoryProducts(String categoryId)async{
     try{
       final products = await ProductRepository.instance.getProductForCategory(categoryId);
+      print("Returned Products Count: ${products.length}");
       return products;
     }catch(e){
       Loaders.errorSnackBar(title: 'Sorry!', message: e.toString());

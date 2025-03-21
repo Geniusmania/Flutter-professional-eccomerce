@@ -30,25 +30,26 @@ class FavouriteController extends GetxController {
   }
 
   void toggleFavouriteProduct(String productId) {
-    if(!favorites.containsKey(productId)){
-      favorites[productId]= true;
+    if (!favorites.containsKey(productId)) {
+      favorites[productId] = true;
       saveFavouritesToStorage();
       Loaders.customToast(message: 'Product has been added to the wishlist');
-    }else{
-LocalStorage.instance.removeData(productId);
-favorites.remove(productId);
-saveFavouritesToStorage();
-favorites.refresh();
-Loaders.customToast(message: 'Product has been removed');
+    } else {
+      LocalStorage.instance.removeData(productId);
+      favorites.remove(productId);
+      saveFavouritesToStorage();
+      favorites.refresh();
+      Loaders.customToast(message: 'Product has been removed');
     }
   }
 
-  void saveFavouritesToStorage(){
+  void saveFavouritesToStorage() {
     final encodedFavourites = json.encode(favorites);
     LocalStorage.instance.saveData('Genius', encodedFavourites);
   }
 
-  Future<List<ProductModel>>favoriteProducts()async{
-    return await ProductRepository.instance.getFavouriteProducts(favorites.keys.toList());
+  Future<List<ProductModel>> favoriteProducts() async {
+    return await ProductRepository.instance
+        .getFavouriteProducts(favorites.keys.toList());
   }
 }

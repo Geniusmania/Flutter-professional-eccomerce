@@ -1,11 +1,10 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:ui/bindings/general_bindings.dart';
-import 'package:ui/firebase_options.dart';
 import 'package:ui/routes/app_routes.dart';
 import 'package:ui/utils/constants/colors.dart';
+import 'package:ui/utils/local_storage/local_storage.dart';
 import 'package:ui/utils/theme/theme.dart';
 import 'package:get_storage/get_storage.dart';
 import 'data/repositories.authentication/authentication_repository.dart';
@@ -13,6 +12,7 @@ import 'data/repositories.authentication/authentication_repository.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
+  await LocalStorage.init('Genius');
   FlutterNativeSplash.preserve(widgetsBinding: WidgetsBinding.instance);
 
   Get.put(AuthenticationRepository());
@@ -24,8 +24,6 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(

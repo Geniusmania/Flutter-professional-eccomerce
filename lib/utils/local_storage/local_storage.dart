@@ -6,14 +6,20 @@ class LocalStorage {
 
   LocalStorage._internal();
 
+  // Track whether storage has been initialized
+  bool _isInitialized = false;
+
   // Initialize storage with a bucket name
   static Future<void> init(String bucketName) async {
-    await GetStorage.init(bucketName);
-    instance._storage = GetStorage(bucketName);
+    if (!instance._isInitialized) {
+      await GetStorage.init(bucketName);
+      instance._storage = GetStorage(bucketName);
+      instance._isInitialized = true;
+    }
   }
 
   void _ensureInitialized() {
-    if (!GetStorage().hasData('_initialized')) {
+    if (!_isInitialized) {
       throw Exception("LocalStorage not initialized. Call LocalStorage.init(bucketName) first.");
     }
   }

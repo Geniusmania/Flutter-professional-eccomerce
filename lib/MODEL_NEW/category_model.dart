@@ -1,13 +1,3 @@
-// To parse this JSON data, do
-//
-//     final categoryModel = categoryModelFromJson(jsonString);
-
-import 'dart:convert';
-
-CategoryModel categoryModelFromJson(String str) => CategoryModel.fromJson(json.decode(str));
-
-String categoryModelToJson(CategoryModel data) => json.encode(data.toJson());
-
 class CategoryModel {
   String name;
   String imageUrl;
@@ -18,17 +8,17 @@ class CategoryModel {
   CategoryModel({
     required this.name,
     required this.imageUrl,
-     this.parentId = '',
+    this.parentId = '',
     required this.isFeatured,
     required this.id,
   });
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) => CategoryModel(
-    name: json["name"],
-    imageUrl: json["imageUrl"],
-    parentId: json["parentId"],
-    isFeatured: json["isFeatured"],
-    id: json["_id"],
+    name: json["name"] ?? "Unknown",  // ✅ Prevents null error
+    imageUrl: json["imageUrl"] ?? "",  // ✅ Handles missing images
+    parentId: json["parentId"] ?? "",  // ✅ Ensures parentId is always a string
+    isFeatured: json["isFeatured"] ?? false,  // ✅ Defaults to false if missing
+    id: json["_id"] ?? "",  // ✅ Ensures id is always present
   );
 
   Map<String, dynamic> toJson() => {
