@@ -1,3 +1,3 @@
 class Api{
-  static const String URL = "http://192.168.30.47:3000";
+  static const String URL = "https://node-api-3548.onrender.com";
 }

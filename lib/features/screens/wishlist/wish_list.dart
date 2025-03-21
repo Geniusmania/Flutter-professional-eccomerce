@@ -21,7 +21,7 @@ class WishListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
-  //  final controller = FavouriteController.instance;
+   final controller = FavouriteController.instance;
     return Scaffold(
       appBar: Appbar(
           title: Text('Wishlist',
@@ -32,35 +32,35 @@ class WishListScreen extends StatelessWidget {
                 color: dark ? AppColors.white : AppColors.dark,
                 onPressed: () => Get.to(const HomeScreen()))
           ]),
-      // body: SingleChildScrollView(
-      //   child: Padding(
-      //     padding: const EdgeInsets.all(20),
-      //     child: FutureBuilder(
-      //         future: controller.favoriteProducts(),
-      //         builder: (context, snapshot) {
-      //           if (snapshot.connectionState == ConnectionState.waiting) {
-      //             return const VerticalProductShimmer();
-      //           }
-      //           if (!snapshot.hasData ||
-      //               snapshot.data == null ||
-      //               snapshot.data!.isEmpty) {
-      //             return AnimationLoaderWidget(
-      //               text: 'No favourites added!',
-      //               animation: 'assets/animations/empty.json',
-      //               onActionPressed: () => (() => Get.to(NavBarScreens())),
-      //             );
-      //           }
-      //           if (snapshot.hasError) {
-      //             return const Center(child: Text('Unexpected error!'));
-      //           }
-      //           final favourites = snapshot.data!;
-      //           return GridLayout(
-      //               itemCount: favourites.length,
-      //               itemBuilder: (_, index) =>
-      //                   ProductCardVertical(product: favourites[index]));
-      //         }),
-      //   ),
-      // ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: FutureBuilder(
+              future: controller.favoriteProducts(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const VerticalProductShimmer();
+                }
+                if (!snapshot.hasData ||
+                    snapshot.data == null ||
+                    snapshot.data!.isEmpty) {
+                  return AnimationLoaderWidget(
+                    text: 'No favourites added!',
+                    animation: 'assets/animations/empty.json',
+                    onActionPressed: () => (() => Get.to(NavBarScreens())),
+                  );
+                }
+                if (snapshot.hasError) {
+                  return const Center(child: Text('Unexpected error!'));
+                }
+                final favourites = snapshot.data!;
+                return GridLayout(
+                    itemCount: favourites.length,
+                    itemBuilder: (_, index) =>
+                        ProductCardVertical(product: favourites[index]));
+              }),
+        ),
+      ),
     );
   }
 }

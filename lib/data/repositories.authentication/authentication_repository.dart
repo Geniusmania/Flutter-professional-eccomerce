@@ -80,12 +80,12 @@ class AuthenticationRepository extends GetxController {
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         final token = responseData['token']??"";
-        final user = UserModel.fromJson(responseData['user']);
+        //final user = UserModel.fromJson(responseData['user']);
 
         deviceStorage.write('token', token); // Store token
         deviceStorage.write('user', responseData['user']); // Store user info
 
-        return user;
+        return null;
       } else {
         throw Exception(responseData['message'] ?? 'Login failed');
       }
