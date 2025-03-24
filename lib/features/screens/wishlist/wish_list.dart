@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:ui/MODEL_NEW/product_model.dart';
 import 'package:ui/commons/widgets/appbar/appBar.dart';
 import 'package:ui/commons/widgets/icon/circular_icon.dart';
 import 'package:ui/commons/widgets/layouts/gridLayout/grid_layout.dart';

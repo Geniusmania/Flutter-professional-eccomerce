@@ -5,8 +5,6 @@ import 'package:ui/commons/widgets/sectionHeader/section_header.dart';
 import 'package:ui/features/screens/all_products/all_products.dart';
 import 'package:ui/features/shop/controllers/category_controller.dart';
 
-import '../../../../MODEL_NEW/product_model.dart';
-import '../../../../commons/widgets/brandshowcase/brand_show_case.dart';
 import '../../../../commons/widgets/layouts/gridLayout/grid_layout.dart';
 import '../../../../commons/widgets/products/products_cards/product_card_vertical.dart';
 import '../../../../commons/widgets/shimmer_effect/brand_shimmer.dart';

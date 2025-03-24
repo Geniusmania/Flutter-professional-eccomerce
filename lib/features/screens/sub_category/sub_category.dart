@@ -11,7 +11,6 @@ import '../../../MODEL_NEW/category_model.dart';
 import '../../../commons/widgets/shimmer_effect/vertical_product_shimmer.dart';
 import '../../../utils/helpers/helper_functions.dart';
 import '../../../utils/popups/animation_loader.dart';
-import '../../button_navigation_bar/button_nav_bar.dart';
 
 class SubCategoryScreen extends StatelessWidget {
   const SubCategoryScreen({super.key, required this.category});

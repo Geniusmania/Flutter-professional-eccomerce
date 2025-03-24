@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:ui/MODEL_NEW/category_model.dart';
-import 'package:ui/utils/popups/loaders.dart';
 
 import '../../constant_api.dart';
 

@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:ui/MODEL_NEW/brand_model.dart';
-import 'package:ui/MODEL_NEW/category_model.dart';
 import 'package:ui/MODEL_NEW/product_model.dart';
 import 'package:ui/data/repositories.authentication/product_repository.dart';
 import 'package:ui/utils/popups/loaders.dart';

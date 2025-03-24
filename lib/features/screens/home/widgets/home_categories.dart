@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ui/MODEL_NEW/category_model.dart';
 import 'package:ui/commons/widgets/widget_Image/common_widget_image.dart';
 import 'package:ui/features/screens/sub_category/sub_category.dart';
 import 'package:ui/features/shop/controllers/category_controller.dart';

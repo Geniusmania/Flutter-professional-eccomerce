@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ui/MODEL_NEW/category_model.dart';
-import 'package:ui/MODEL_NEW/product_model.dart';
 import 'package:ui/commons/widgets/shimmer_effect/brand_shimmer.dart';
 
 import '../../../features/shop/controllers/brand_controller.dart';

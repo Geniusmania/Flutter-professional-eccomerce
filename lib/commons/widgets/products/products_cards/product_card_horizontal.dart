@@ -10,7 +10,6 @@ import 'package:ui/utils/constants/colors.dart';
 import 'package:ui/utils/constants/sizes.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
 import '../../../../MODEL_NEW/product_model.dart';
-import '../../icon/circular_icon.dart';
 import '../../rounded_image/rounded_image.dart';
 
 class ProductCardHorizontal extends StatelessWidget {
