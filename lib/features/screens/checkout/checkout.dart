@@ -16,7 +16,7 @@ import '../../../utils/constants/sizes.dart';
 
 class CheckoutScreen extends StatelessWidget {
   const CheckoutScreen({super.key});
-//final BrandModel brand;
+
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
