@@ -13,8 +13,12 @@ class CartController extends GetxController {
   RxDouble totalCartPrice = 0.0.obs;
   RxInt productQuantityInCart = 0.obs;
   RxList<CartItemModel> cartItems = <CartItemModel>[].obs;
-  final variationController = VariationController.instance;
+  final variationController = Get.put(VariationController());
 
+
+  CartController(){
+    loadCartItems();
+  }
 //add items in the cart
   void addToCart(ProductModel product) {
     //quantity check
@@ -75,13 +79,15 @@ class CartController extends GetxController {
     LocalStorage.instance.saveData('cartItems', cartItemStrings);
   }
 
-  void loadCartItems(){
+  void loadCartItems() {
     final cartItemString = LocalStorage.instance.readData('cartItems');
-    if(cartItemString != null){
-      cartItems.assignAll(cartItemString.map((item)=> CartItemModel.fromJson(item as Map<String, dynamic>)));
+    if (cartItemString != null) {
+      cartItems.assignAll(cartItemString
+          .map((item) => CartItemModel.fromJson(item as Map<String, dynamic>)));
       updateCartTotals();
     }
   }
+
 //convert productModel to cartItemModel
   CartItemModel convertToCartItem(ProductModel product, int quantity) {
     //single or variable product check
@@ -108,5 +114,26 @@ class CartController extends GetxController {
         image: isVariation ? variation.image : product.thumbnail,
         brandName: product.brand!.name,
         selectedVariations: isVariation ? variation.attributeValues : null);
+  }
+
+  int getProductQuantityInCart(String productId) {
+    final foundItem = cartItems
+        .where((item) => item.productId == productId)
+        .fold(0, (previousValue, element) => previousValue + element.quantity);
+    return foundItem;
+  }
+
+  int getVariationQuantityInCart(String productId, String variationId) {
+    final foundItem = cartItems.firstWhere(
+        (item) =>
+            item.productId == productId && item.variationId == variationId,
+        orElse: () => CartItemModel.empty());
+    return foundItem.quantity;
+  }
+
+  void clearCart(){
+    productQuantityInCart.value = 0;
+    cartItems.clear();
+    updateCart();
   }
 }

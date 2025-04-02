@@ -33,7 +33,7 @@ class StoreScreen extends StatelessWidget {
               Text('Store', style: Theme.of(context).textTheme.headlineMedium),
           actions: [
             ShoppingCounter(
-                iconColor: dark ? Colors.white : Colors.black, onPressed: () {})
+                iconColor: dark ? Colors.white : Colors.black,)
           ],
         ),
         body: NestedScrollView(

@@ -16,7 +16,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget{
   Widget build(BuildContext context) {
    final controller = Get.put(UserProfileController());
    final token = controller.deviceStorage.read('token');
-   print(token);
+
 
    if (token != null){ controller.getUserProfile(token);}
     return Padding(
@@ -44,14 +44,14 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget{
             )
           ],
         ),
-        actions:  [
-        ShoppingCounter(onPressed: () {  }, iconColor:AppColors.white),
+        actions:  const [
+        ShoppingCounter(iconColor:AppColors.white),
         ],
       ),
     );
   }
 
   @override
-  // TODO: implement preferredSize
+
   Size get preferredSize => throw UnimplementedError();
 }
