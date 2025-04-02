@@ -66,5 +66,9 @@ class VariationController extends GetxController {
         selectedVariation.value.stock > 0 ? 'In Stock' : 'Out of Stock';
   }
 
-  void resetSelectedAttribute() {}
+  void resetSelectedAttribute() {
+    selectedAttributes.clear();
+    variationStockStatus.value = '';
+    selectedVariation.value = ProductVariationModel.empty();
+  }
 }
