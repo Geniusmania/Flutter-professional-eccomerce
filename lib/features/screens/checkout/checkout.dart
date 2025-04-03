@@ -9,7 +9,9 @@ import 'package:ui/features/screens/checkout/widgets/billing_address.dart';
 import 'package:ui/features/screens/checkout/widgets/billing_payment.dart';
 import 'package:ui/features/screens/checkout/widgets/coupon.dart';
 import 'package:ui/features/screens/checkout/widgets/billing_amount.dart';
+import 'package:ui/features/shop/controllers/cart_item_controller.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
+import 'package:ui/utils/helpers/pricing_calculator.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
@@ -19,6 +21,8 @@ class CheckoutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = CartController.instance;
+    final subTotal = controller.totalCartPrice.value;
     final dark = HelperFunctions.isDarkMode(context);
     return Scaffold(
       appBar: Appbar(
@@ -57,12 +61,18 @@ class CheckoutScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar:Padding(
-    padding: const EdgeInsets.all(24),
-    child: ElevatedButton(onPressed: ()=> Get.to(()=> SuccessScreen(
-        onPressed:()=> Get.offAll(()=>  const ButtonNavBar()),
-        image: 'assets/images/succesful.png', title: 'Payment Successful', subtitle: 'Your product will be shipped soon!')), child: const Text('Checkout GHC464'),),
-    ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(24),
+        child: ElevatedButton(
+          onPressed: () => Get.to(() => SuccessScreen(
+              onPressed: () => Get.offAll(() => const ButtonNavBar()),
+              image: 'assets/images/succesful.png',
+              title: 'Payment Successful',
+              subtitle: 'Your product will be shipped soon!')),
+          child: Text(
+              'Checkout GHC${PricingCalculator.calculateTotalPrice(subTotal, 'Ghana')}'),
+        ),
+      ),
     );
   }
 }

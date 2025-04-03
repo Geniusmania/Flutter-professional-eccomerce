@@ -9,9 +9,9 @@ import '../../../../utils/helpers/helper_functions.dart';
 
 class ProductQuantityWithAddAndRemoveButton extends StatelessWidget {
   const ProductQuantityWithAddAndRemoveButton({
-    Key? key,
+    super.key,
      this.remove, this.add, required this.quantity
-  }) : super(key: key); 
+  });
 final VoidCallback? add, remove;
 final int quantity;
 

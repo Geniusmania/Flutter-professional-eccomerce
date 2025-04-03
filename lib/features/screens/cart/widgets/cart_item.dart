@@ -46,10 +46,11 @@ class CartItem extends StatelessWidget {
                         .map(
                           (e) => TextSpan(children: [
                             TextSpan(
-                                text: e.key,
+                                text: '${e.key}: ',
                                 style: Theme.of(context).textTheme.bodySmall),
+
                             TextSpan(
-                                text: e.value,
+                                text: '${e.value} ',
                                 style: Theme.of(context).textTheme.bodySmall),
                           ]),
                         )

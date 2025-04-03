@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:ui/MODEL_NEW/product_variation_model.dart';
+import 'package:ui/features/shop/controllers/cart_item_controller.dart';
 import 'package:ui/features/shop/controllers/product_detail_controller.dart';
 
 import '../../../MODEL_NEW/product_model.dart';
@@ -27,6 +28,12 @@ class VariationController extends GetxController {
 
     if (selectedVariation.image.isNotEmpty) {
       imageController.selectedProductImage.value = selectedVariation.image;
+    }
+
+    if (selectedVariation.id.isNotEmpty) {
+      final cartController = CartController.instance;
+      cartController.productQuantityInCart.value = cartController
+          .getVariationQuantityInCart(product.id, selectedVariation.id);
     }
     this.selectedVariation.value = selectedVariation;
     getProductVariationStockStatus();

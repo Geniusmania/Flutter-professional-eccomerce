@@ -1,22 +1,28 @@
 class PricingCalculator {
-  static double calculateToatlPrice(double PruductPrice, String location) {
+  static double calculateTotalPrice(double productPrice, String location) {
     double taxRate = getTaxRateForLocation(location);
-    double taxAmount = PruductPrice * taxRate;
+    double taxAmount = productPrice * taxRate;
 
     double shippingCost = getShippingCost(location);
-    double totalPrice = PruductPrice + taxAmount + shippingCost;
+    double totalPrice = productPrice + taxAmount + shippingCost;
     return totalPrice;
   }
 
 
-  static String calculateShippingCost(String location) {
+  static String calculateTax(double subTotal, String location){
+    double taxRate = getTaxRateForLocation(location);
+    double taxAmount = subTotal * taxRate;
+    return taxAmount.toStringAsFixed(2);
+  }
+
+  static String calculateShippingCost(double subTotal,String location) {
     double shippingCost = getShippingCost(location);
     return shippingCost.toStringAsFixed(2);
   }
 
   static double getTaxRateForLocation(String location) {
-    if (location == 'India') {
-      return 0.18;
+    if (location == 'Ghana') {
+      return 0.00;
     } else if (location == 'USA') {
       return 0.15;
     } else if (location == 'UK') {
@@ -27,8 +33,8 @@ class PricingCalculator {
   }
 
   static double getShippingCost(String location) {
-    if (location == 'India') {
-      return 10.0;
+    if (location == 'Ghana') {
+      return 0.00;
     } else if (location == 'USA') {
       return 20.0;
     } else if (location == 'UK') {

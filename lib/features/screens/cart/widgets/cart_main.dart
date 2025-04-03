@@ -13,7 +13,7 @@ class CartMainItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = CartController.instance;
+    final controller = Get.put(CartController());
     return Padding(
       padding: const EdgeInsets.all(24),
       child: Obx(
