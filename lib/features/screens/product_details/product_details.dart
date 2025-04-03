@@ -25,7 +25,7 @@ class ProductDetailScreen extends StatelessWidget {
     final cartController = Get.find<ProductController>(); // For checkout functionality
 
     return Scaffold(
-      bottomNavigationBar: const BottomAddToCart(),
+      bottomNavigationBar:  BottomAddToCart(product: product),
       body: SingleChildScrollView(
         child: Column(
           children: [

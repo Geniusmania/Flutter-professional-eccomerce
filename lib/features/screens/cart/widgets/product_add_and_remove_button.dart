@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -8,11 +9,11 @@ import '../../../../utils/helpers/helper_functions.dart';
 
 class ProductQuantityWithAddAndRemoveButton extends StatelessWidget {
   const ProductQuantityWithAddAndRemoveButton({
-    super.key,
-
-  });
-
-
+    Key? key,
+     this.remove, this.add, required this.quantity
+  }) : super(key: key); 
+final VoidCallback? add, remove;
+final int quantity;
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,7 @@ class ProductQuantityWithAddAndRemoveButton extends StatelessWidget {
     return Row(mainAxisSize: MainAxisSize.min,
       children: [
         CircularIcon(
+          onPressed: remove,
           icon: Iconsax.minus,
           size: AppSize.md,
           width: 32,
@@ -28,9 +30,10 @@ class ProductQuantityWithAddAndRemoveButton extends StatelessWidget {
           backgroundColor:
           dark ? AppColors.darkergrey : AppColors.light,
         ),const SizedBox(width: 16),
-        Text('2',style: Theme.of(context).textTheme.titleSmall),
+        Text(quantity.toString(),style: Theme.of(context).textTheme.titleSmall),
         const SizedBox(width: 16),
         CircularIcon(
+          onPressed: add,
             icon: Iconsax.add,
             size: AppSize.md,
             width: 32,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui/MODEL_NEW/cart_item_modrl.dart';
 import '../../../../commons/widgets/rounded_image/rounded_image.dart';
 import '../../../../commons/widgets/texts/product_title_text.dart';
 import '../../../../commons/widgets/title_and_icon/title_and_icon.dart';
@@ -8,10 +9,10 @@ import '../../../../utils/helpers/helper_functions.dart';
 class CartItem extends StatelessWidget {
   const CartItem({
     super.key,
-
+    required this.item,
   });
 
-
+  final CartItemModel item;
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +20,12 @@ class CartItem extends StatelessWidget {
     return Row(
       children: [
         RoundedImage(
-          imageUrl: 'assets/products/3.jpg',
+          isNetworkImage: true,
+          imageUrl: item.image ?? '',
           height: 60,
           width: 60,
           padding: const EdgeInsets.all(8),
-          backgroundColor:
-          dark ? AppColors.darkergrey : AppColors.light,
+          backgroundColor: dark ? AppColors.darkergrey : AppColors.light,
         ),
         const SizedBox(width: 16),
         Expanded(
@@ -33,32 +34,27 @@ class CartItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               BrandTitleWithIcon(
-                  title: 'Balanciaga',
+                  title: item.brandName!,
                   textColor: dark ? AppColors.white : AppColors.black),
-              const Flexible(
-                child: ProductTitleText(
-                    title: 'Red nice bag', maxLines: 1),
+              Flexible(
+                child: ProductTitleText(title: item.title, maxLines: 1),
               ),
-              Text.rich(TextSpan(children: [
+              Text.rich(
                 TextSpan(
-                    text: 'Color: ',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodySmall!
-                        .apply(color: dark ? Colors.white54 : null)),
-                TextSpan(
-                    text: 'Green  ',
-                    style: Theme.of(context).textTheme.bodyLarge),
-                TextSpan(
-                    text: 'Size: ',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodySmall!
-                        .apply(color: dark ? Colors.white54 : null)),
-                TextSpan(
-                    text: 'EU 42',
-                    style: Theme.of(context).textTheme.bodyLarge),
-              ]))
+                    children: (item.selectedVariations ?? {})
+                        .entries
+                        .map(
+                          (e) => TextSpan(children: [
+                            TextSpan(
+                                text: e.key,
+                                style: Theme.of(context).textTheme.bodySmall),
+                            TextSpan(
+                                text: e.value,
+                                style: Theme.of(context).textTheme.bodySmall),
+                          ]),
+                        )
+                        .toList()),
+              ),
             ],
           ),
         )

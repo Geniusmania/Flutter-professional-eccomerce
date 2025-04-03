@@ -15,8 +15,7 @@ class CartController extends GetxController {
   RxList<CartItemModel> cartItems = <CartItemModel>[].obs;
   final variationController = Get.put(VariationController());
 
-
-  CartController(){
+  CartController() {
     loadCartItems();
   }
 //add items in the cart
@@ -79,6 +78,52 @@ class CartController extends GetxController {
     LocalStorage.instance.saveData('cartItems', cartItemStrings);
   }
 
+  // add one item to cart
+
+  void addOneToCart(CartItemModel item) {
+    int index = cartItems.indexWhere((cartItem) =>
+        cartItem.productId == item.productId &&
+        cartItem.variationId == item.variationId);
+
+    if (index >= 0) {
+      cartItems[index].quantity += 1;
+    } else {
+      cartItems.add(item);
+    }
+    updateCart();
+  }
+
+  void removeOneFromCart(CartItemModel item) {
+    int index = cartItems.indexWhere((cartItem) =>
+        cartItem.productId == item.productId &&
+        cartItem.variationId == item.variationId);
+
+    if (index >= 0) {
+      if (cartItems[index].quantity > 1) {
+        cartItems[index].quantity -= 1;
+      }
+    } else {
+      cartItems[index].quantity == 1
+          ? removeFromCartDialog(index)
+          : cartItems.removeAt(index);
+    }
+    updateCart();
+  }
+
+  void removeFromCartDialog(int index) {
+    Get.defaultDialog(
+      title: 'Remove product',
+      middleText: 'Are you sure you want to remove this product?',
+      onConfirm: () {
+        cartItems.removeAt(index);
+        updateCart();
+        Loaders.customToast(message: 'Product removed from cart');
+        Get.back();
+      },
+      onCancel: () => () => Get.back(),
+    );
+  }
+
   void loadCartItems() {
     final cartItemString = LocalStorage.instance.readData('cartItems');
     if (cartItemString != null) {
@@ -131,7 +176,7 @@ class CartController extends GetxController {
     return foundItem.quantity;
   }
 
-  void clearCart(){
+  void clearCart() {
     productQuantityInCart.value = 0;
     cartItems.clear();
     updateCart();

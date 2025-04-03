@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:ui/MODEL_NEW/product_model.dart';
 import 'package:ui/commons/widgets/icon/circular_icon.dart';
 import 'package:ui/utils/constants/sizes.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
 import '../../../../utils/constants/colors.dart';
+import '../../../shop/controllers/cart_item_controller.dart';
 
 class BottomAddToCart extends StatelessWidget {
-  const BottomAddToCart({super.key});
-
+  const BottomAddToCart({super.key, required this.product});
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
+    final controller = CartController.instance;
     final dark = HelperFunctions.isDarkMode(context);
     return Container(
       padding: const EdgeInsets.symmetric(
@@ -21,32 +24,40 @@ class BottomAddToCart extends StatelessWidget {
             topLeft: Radius.circular(AppSize.cardRadiusLg),
             topRight: Radius.circular(AppSize.cardRadiusLg),
           )),
-      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
-              const CircularIcon(
+              CircularIcon(
                 icon: Iconsax.minus,
                 width: 40,
                 height: 40,
                 color: AppColors.white,
                 backgroundColor: AppColors.darkgrey,
+                onPressed: () => controller.productQuantityInCart.value < 1
+                    ? null
+                    : controller.productQuantityInCart.value -= 1,
               ),
               const SizedBox(width: AppSize.spaceBtwTtems),
-              Text('2', style: Theme.of(context).textTheme.titleSmall),
+              Text(controller.productQuantityInCart.value.toString(),
+                  style: Theme.of(context).textTheme.titleSmall),
               const SizedBox(width: AppSize.spaceBtwTtems),
-              const CircularIcon(
+              CircularIcon(
                   icon: Iconsax.add,
                   width: 40,
                   height: 40,
                   color: AppColors.white,
-                  backgroundColor: AppColors.black),
+                  backgroundColor: AppColors.black,
+                  onPressed: () => controller.productQuantityInCart.value += 1),
             ],
           ),
           ElevatedButton(
               onPressed: () {},
-              style: ElevatedButton.styleFrom(padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 4),backgroundColor: AppColors.black),
-
+              style: ElevatedButton.styleFrom(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  backgroundColor: AppColors.black),
               child: const Text('Add to Cart'))
         ],
       ),

@@ -1,7 +1,9 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
+
 import 'package:ui/MODEL_NEW/product_model.dart';
+import 'package:ui/commons/widgets/add_to_cart/add_to_cart.dart';
 import 'package:ui/commons/widgets/products/product_price/product_price.dart';
 import 'package:ui/commons/widgets/roudedContainer/rounded_container.dart';
 import 'package:ui/commons/widgets/rounded_image/rounded_image.dart';
@@ -134,22 +136,8 @@ class ProductCardVertical extends StatelessWidget {
                   ),
                 ),
 
-                Container(
-                  decoration: const BoxDecoration(
-                      color: AppColors.dark,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(AppSize.cardRadiusMd),
-                          bottomRight:
-                              Radius.circular(AppSize.productImageRadius))),
-                  child: const SizedBox(
-                      height: AppSize.iconLg * 1.2,
-                      width: AppSize.iconLg * 1.2,
-                      child: Icon(
-                        Iconsax.add,
-                        color: AppColors.white,
-                      )),
-                )
-                // price
+                ProductAddToCart(product:product)
+                
               ],
             )
           ],
@@ -158,5 +146,4 @@ class ProductCardVertical extends StatelessWidget {
     );
   }
 }
-
 
