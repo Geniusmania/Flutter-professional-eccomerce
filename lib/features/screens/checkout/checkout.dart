@@ -12,9 +12,11 @@ import 'package:ui/features/screens/checkout/widgets/billing_amount.dart';
 import 'package:ui/features/shop/controllers/cart_controller.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
 import 'package:ui/utils/helpers/pricing_calculator.dart';
+import 'package:ui/utils/popups/loaders.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
+import '../../shop/controllers/order_controller.dart';
 
 class CheckoutScreen extends StatelessWidget {
   const CheckoutScreen({super.key});
@@ -22,7 +24,10 @@ class CheckoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = CartController.instance;
+    final orderController = Get.put(OrderController());
     final subTotal = controller.totalCartPrice.value;
+    final totalAmount =
+        PricingCalculator.calculateTotalPrice(subTotal, "Ghana");
     final dark = HelperFunctions.isDarkMode(context);
     return Scaffold(
       appBar: Appbar(
@@ -64,13 +69,10 @@ class CheckoutScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(24),
         child: ElevatedButton(
-          onPressed: () => Get.to(() => SuccessScreen(
-              onPressed: () => Get.offAll(() => const ButtonNavBar()),
-              image: 'assets/images/succesful.png',
-              title: 'Payment Successful',
-              subtitle: 'Your product will be shipped soon!')),
-          child: Text(
-              'Checkout GHC${PricingCalculator.calculateTotalPrice(subTotal, 'Ghana')}'),
+          onPressed: subTotal > 0
+              ? () => orderController.processOrder(totalAmount)
+              : Loaders.customToast(message: 'Add items to cart to proceed'),
+          child: Text('Checkout GHC$totalAmount'),
         ),
       ),
     );

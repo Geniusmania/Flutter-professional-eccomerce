@@ -6,9 +6,11 @@ import 'package:get_storage/get_storage.dart';
 import 'package:ui/MODEL_NEW/address_model.dart';
 import 'package:ui/commons/widgets/sectionHeader/section_header.dart';
 import 'package:ui/features/screens/personalization/adress/widgets/single_address.dart';
+import 'package:ui/utils/helpers/helper_functions.dart';
 import 'package:ui/utils/popups/loaders.dart';
 import '../../../data/repositories.authentication/address_repository.dart';
 import '../../../utils/constants/sizes.dart';
+import '../../screens/personalization/adress/add_new_address.dart';
 
 class AddressController extends GetxController {
   static AddressController get instance => Get.find();
@@ -77,40 +79,49 @@ class AddressController extends GetxController {
                   child: Column(
                     children: [
                       const SectionHeading(
-                        title: 'Choose billing address',
+                        title: 'Select shipping address',
                         showActionButton: false,
                       ),
                       const SizedBox(height: AppSize.spaceBtwSections),
                       FutureBuilder(
-                          future: getAllAddresses(), builder: (_, snapshot) {
-
-                            if(snapshot.connectionState == ConnectionState.waiting) {
-                           return   const CircularProgressIndicator();
+                          future: getAllAddresses(),
+                          builder: (_, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return const CircularProgressIndicator();
                             }
 
-                            if(!snapshot.hasData || snapshot.data!.isEmpty){
-                              return const Center(child: Text('No address added'));
+                            if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                              return const Center(
+                                  child: Text('No address added'));
                             }
 
-                            if(snapshot.hasError){
-                              return const Center(child: Text('Unexpected error!'));
+                            if (snapshot.hasError) {
+                              return const Center(
+                                  child: Text('Unexpected error!'));
                             }
                             return ListView.builder(
                               shrinkWrap: true,
                               itemCount: snapshot.data!.length,
-                              itemBuilder: (_,index)=> Padding(
+                              itemBuilder: (_, index) => Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: SingleAddress(
                                   address: snapshot.data![index],
                                   onTap: () {
-                                     selectedAddress(snapshot.data![index]);
+                                    selectedAddress(snapshot.data![index]);
                                     Get.back();
                                   },
                                 ),
                               ),
                             );
-
-                      })
+                          }),
+                       const SizedBox(height: AppSize.spaceBtwSections),
+                      SizedBox(
+                          width: HelperFunctions.screenWidth(context) * .85,
+                          child: ElevatedButton(style: ElevatedButton.styleFrom(backgroundColor: Colors.blueGrey),
+                              onPressed: () =>
+                                  Get.to(() => const AddNewAddress()),
+                              child: const Text('Add new address')))
                     ],
                   )),
             ));
