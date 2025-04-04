@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui/features/screens/cart/widgets/product_add_and_remove_button.dart';
-import 'package:ui/features/shop/controllers/cart_item_controller.dart';
+import 'package:ui/features/shop/controllers/cart_controller.dart';
 
 import '../../../../commons/widgets/products/product_price/product_price.dart';
 import 'cart_item.dart';

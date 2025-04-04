@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui/features/shop/controllers/cart_item_controller.dart';
+import 'package:ui/features/shop/controllers/cart_controller.dart';
 import 'package:ui/utils/constants/sizes.dart';
 import 'package:ui/utils/helpers/pricing_calculator.dart';
 

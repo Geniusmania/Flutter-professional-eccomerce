@@ -4,8 +4,7 @@ import 'package:ui/features/shop/controllers/variation_controller.dart';
 import 'package:ui/utils/constants/enums.dart';
 import 'package:ui/utils/local_storage/local_storage.dart';
 import 'package:ui/utils/popups/loaders.dart';
-import '../../../MODEL_NEW/cart_item_modrl.dart';
-
+import '../../../MODEL_NEW/cart_item_model.dart';
 
 class CartController extends GetxController {
   static CartController get instance => Get.find();
@@ -21,23 +20,42 @@ class CartController extends GetxController {
   }
 
   void addToCart(ProductModel product) {
+    // Validate product first
+    if (product.id.isEmpty) {
+      Loaders.customToast(message: 'Invalid product');
+      return;
+    }
+
     if (productQuantityInCart.value < 1) {
       Loaders.customToast(message: 'Select products');
       return;
     }
 
-    if (product.productType == ProductType.variable.name &&
+    // Make sure product type is not null
+    final productType = product.productType.isNotEmpty
+        ? product.productType
+        : ProductType.single.name;
+
+    if (productType == ProductType.variable.name &&
         variationController.selectedVariation.value.id.isEmpty) {
       Loaders.customToast(message: 'Select variation');
       return;
     }
 
-    if (product.stock < 1) {
-      Loaders.customToast(message: 'Product is out of stock');
-      return;
+    if (productType == ProductType.variable.name) {
+      if (variationController.selectedVariation.value.stock < 1) {
+        Loaders.customToast(message: 'Selected variation is out of stock');
+        return;
+      }
+    } else {
+      if (product.stock < 1) {
+        Loaders.customToast(message: 'Product is out of stock');
+        return;
+      }
     }
 
-    final selectedCartItem = convertToCartItem(product, productQuantityInCart.value);
+    final selectedCartItem =
+    convertToCartItem(product, productQuantityInCart.value);
     int index = cartItems.indexWhere((cartItem) =>
     cartItem.productId == selectedCartItem.productId &&
         cartItem.variationId == selectedCartItem.variationId);
@@ -74,6 +92,12 @@ class CartController extends GetxController {
   }
 
   void addOneToCart(CartItemModel item) {
+    // Validate item first
+    if (item.productId.isEmpty) {
+      Loaders.customToast(message: 'Invalid product');
+      return;
+    }
+
     int index = cartItems.indexWhere((cartItem) =>
     cartItem.productId == item.productId &&
         cartItem.variationId == item.variationId);
@@ -87,7 +111,18 @@ class CartController extends GetxController {
   }
 
   void updateAlreadyAddedProductCount(ProductModel product) {
-    if (product.productType == ProductType.single.name) {
+    // Validate product first
+    if (product.id.isEmpty) {
+      productQuantityInCart.value = 0;
+      return;
+    }
+
+    // Make sure product type is not null
+    final productType = product.productType.isNotEmpty
+        ? product.productType
+        : ProductType.single.name;
+
+    if (productType == ProductType.single.name) {
       productQuantityInCart.value = getProductQuantityInCart(product.id);
     } else {
       final variationId = variationController.selectedVariation.value.id;
@@ -127,11 +162,35 @@ class CartController extends GetxController {
   }
 
   void loadCartItems() {
-    final cartItemString = LocalStorage.instance.readData('cartItems');
-    if (cartItemString != null) {
-      cartItems.assignAll(cartItemString.map((item) =>
-          CartItemModel.fromJson(item as Map<String, dynamic>)).toList());
-      updateCartTotals();
+    try {
+      final cartItemsData = LocalStorage.instance.readData('cartItems');
+      if (cartItemsData != null) {
+        // Clear existing items first
+        cartItems.clear();
+
+        // Make sure cartItemsData is a List
+        if (cartItemsData is List) {
+          for (var item in cartItemsData) {
+            try {
+              if (item is Map<String, dynamic>) {
+                final cartItem = CartItemModel.fromJson(item);
+                cartItems.add(cartItem);
+              }
+            } catch (e) {
+              print('Error parsing cart item: $e');
+              // Skip invalid items
+            }
+          }
+
+          updateCartTotals();
+        } else {
+          print('Invalid cart data format');
+          clearCart();
+        }
+      }
+    } catch (e) {
+      print('Error loading cart items: $e');
+      clearCart();
     }
   }
 
@@ -143,8 +202,18 @@ class CartController extends GetxController {
     final variation = variationController.selectedVariation.value;
     final isVariation = variation.id.isNotEmpty;
     final price = isVariation
-        ? (variation.salePrice > 0.0 ? variation.salePrice : variation.price)
-        : (product.salePrice > 0.0 ? product.salePrice : product.price);
+        ? variation.salePrice > 0.0
+        ? variation.salePrice
+        : variation.price
+        : product.salePrice > 0.0
+        ? product.salePrice
+        : product.price;
+
+    // Make sure brand name is not null
+    String brandName = '';
+    if (product.brand != null && product.brand?.name != null) {
+      brandName = product.brand!.name ?? '';
+    }
 
     return CartItemModel(
       productId: product.id,
@@ -153,22 +222,35 @@ class CartController extends GetxController {
       price: price,
       variationId: variation.id,
       image: isVariation ? variation.image : product.thumbnail,
-      brandName: product.brand?.name ?? '',
+      brandName: brandName,
       selectedVariations: isVariation ? variation.attributeValues : null,
     );
   }
 
   int getProductQuantityInCart(String productId) {
+    if (productId.isEmpty) return 0;
+
     return cartItems
         .where((item) => item.productId == productId)
         .fold(0, (prev, item) => prev + item.quantity);
   }
 
   int getVariationQuantityInCart(String productId, String variationId) {
-    return cartItems.firstWhere(
-          (item) => item.productId == productId && item.variationId == variationId,
-      orElse: () => CartItemModel.empty(),
-    ).quantity;
+    if (productId.isEmpty) return 0;
+
+    try {
+      var matchingItems = cartItems.where(
+              (item) => item.productId == productId && item.variationId == variationId
+      ).toList();
+
+      if (matchingItems.isNotEmpty) {
+        return matchingItems.first.quantity;
+      }
+      return 0;
+    } catch (e) {
+      print('Error in getVariationQuantityInCart: $e');
+      return 0;
+    }
   }
 
   void clearCart() {

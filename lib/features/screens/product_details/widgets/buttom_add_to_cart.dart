@@ -6,7 +6,7 @@ import 'package:ui/commons/widgets/icon/circular_icon.dart';
 import 'package:ui/utils/constants/sizes.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
 import '../../../../utils/constants/colors.dart';
-import '../../../shop/controllers/cart_item_controller.dart';
+import '../../../shop/controllers/cart_controller.dart';
 
 class BottomAddToCart extends StatelessWidget {
   const BottomAddToCart({super.key, required this.product});

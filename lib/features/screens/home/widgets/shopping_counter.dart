@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:ui/features/shop/controllers/cart_item_controller.dart';
+import 'package:ui/features/shop/controllers/cart_controller.dart';
 import 'package:ui/utils/constants/colors.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
 

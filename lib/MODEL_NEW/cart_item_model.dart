@@ -21,14 +21,14 @@ class CartItemModel {
 
   Map<String, dynamic> toJson() {
     return {
-      'product_id': productId,
+      'productId': productId,
       'title': title,
       'price': price,
       'image': image,
       'quantity': quantity,
-      'variation_id': variationId,
-      'brand_name': brandName,
-      'selected_variations': selectedVariations,
+      'variationId': variationId,
+      'brandName': brandName,
+      'selectedVariations': selectedVariations,
     };
   }
 
@@ -36,16 +36,16 @@ class CartItemModel {
 
   factory CartItemModel.fromJson(Map<String, dynamic> json) {
     return CartItemModel(
-      productId: json['product_id'],
+      productId: json['productId'],
       title: json['title'] ?? "",
       price: json['price']?.toDouble() ?? 0.0, 
       image: json['image'],
       quantity: json['quantity'],
       variationId:
-          json['variation_id'] ?? '',
-      brandName: json['brand_name'],
-      selectedVariations: json['selected_variations'] != null
-          ? Map<String, String>.from(json['selected_variations'])
+          json['variationId'] ?? '',
+      brandName: json['brandName'],
+      selectedVariations: json['selectedVariations'] != null
+          ? Map<String, String>.from(json['selectedVariations'])
           : null, // Handle null case for selectedVariations
     );
   }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:ui/MODEL_NEW/product_model.dart';
-import 'package:ui/features/shop/controllers/cart_item_controller.dart';
+import 'package:ui/features/shop/controllers/cart_controller.dart';
 import 'package:ui/utils/constants/colors.dart';
 import 'package:ui/utils/constants/sizes.dart';
 
@@ -19,6 +19,7 @@ class ProductAddToCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Safely check if product is valid
     if (product.id.isEmpty) {
       return const SizedBox.shrink();
     }
@@ -27,7 +28,9 @@ class ProductAddToCart extends StatelessWidget {
     return InkWell(
       onTap: () => _handleAddToCart(controller, context),
       child: Obx(() {
-        final quantity = controller.getProductQuantityInCart(product.id);
+        final quantity = product.id.isNotEmpty
+            ? controller.getProductQuantityInCart(product.id)
+            : 0;
         return _buildCartButton(context, quantity);
       }),
     );
@@ -35,7 +38,20 @@ class ProductAddToCart extends StatelessWidget {
 
   void _handleAddToCart(CartController controller, BuildContext context) {
     try {
-      if (product.productType == ProductType.single.name) {
+      // Check if product is valid before proceeding
+      if (product.id.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Invalid product')),
+        );
+        return;
+      }
+
+      // Make sure product type is not null
+      final productType = product.productType.isNotEmpty
+          ? product.productType
+          : ProductType.single.name;
+
+      if (productType == ProductType.single.name) {
         final cartItem = controller.convertToCartItem(product, 1);
         controller.addOneToCart(cartItem);
       } else {

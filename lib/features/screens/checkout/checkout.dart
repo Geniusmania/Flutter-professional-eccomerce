@@ -9,7 +9,7 @@ import 'package:ui/features/screens/checkout/widgets/billing_address.dart';
 import 'package:ui/features/screens/checkout/widgets/billing_payment.dart';
 import 'package:ui/features/screens/checkout/widgets/coupon.dart';
 import 'package:ui/features/screens/checkout/widgets/billing_amount.dart';
-import 'package:ui/features/shop/controllers/cart_item_controller.dart';
+import 'package:ui/features/shop/controllers/cart_controller.dart';
 import 'package:ui/utils/helpers/helper_functions.dart';
 import 'package:ui/utils/helpers/pricing_calculator.dart';
 

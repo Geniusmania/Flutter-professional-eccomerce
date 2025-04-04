@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:ui/commons/widgets/appbar/appBar.dart';
 import 'package:ui/features/screens/cart/widgets/cart_main.dart';
 import 'package:ui/features/screens/checkout/checkout.dart';
-import 'package:ui/features/shop/controllers/cart_item_controller.dart';
+import 'package:ui/features/shop/controllers/cart_controller.dart';
 import 'package:ui/utils/popups/animation_loader.dart';
 
 class CartScreen extends StatelessWidget {

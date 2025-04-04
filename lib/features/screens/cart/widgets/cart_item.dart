@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui/MODEL_NEW/cart_item_modrl.dart';
+import 'package:ui/MODEL_NEW/cart_item_model.dart';
 import '../../../../commons/widgets/rounded_image/rounded_image.dart';
 import '../../../../commons/widgets/texts/product_title_text.dart';
 import '../../../../commons/widgets/title_and_icon/title_and_icon.dart';
