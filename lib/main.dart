@@ -12,7 +12,7 @@ import 'data/repositories.authentication/authentication_repository.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
-  await LocalStorage.init('Genius');
+ // await LocalStorage.init('Genius');
   FlutterNativeSplash.preserve(widgetsBinding: WidgetsBinding.instance);
 
   Get.put(AuthenticationRepository());
